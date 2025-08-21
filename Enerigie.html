@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="energi.css">
+    <link rel="stylesheet" href="fontawesome-free-6.5.1-web/fontawesome-free-6.5.1-web/css/all.min.css">
+  <link rel="icon" href="AB12.png" type="image/png">
+</head>
+<body>
+      <!-- MENU LATÉRAL -->
+
+<!-- MENU HAMBURGER -->
+<div id="menu-hamburger" class="menu-hamburger">
+  &#9776;
+</div>
+
+<nav class="sidebar" id="sidebar">
+  <img src="AB12.png" alt="Logo">
+
+  <a href="Accueil.html" class="canvas"><i class="fas fa-home"></i> Vue d'ensemble</a>
+
+  <div class="grid-menu">
+    <a href="Premuin.html" class="menu-item">
+      <i class="fas fa-calculator"></i>
+      <span>Modèles</span>
+    </a>
+
+    <a href="Avis.html" class="menu-item">
+      <i class="fas fa-comment-dots"></i>
+      <span>Votre avis</span>
+    </a>
+
+    <a href="Propos.html" class="menu-item">
+      <i class="fas fa-info-circle"></i>
+      <span>A Propos</span>
+    </a>
+  </div>
+</nav>
+
+
+
+<style>
+  /* --- Hamburger --- */
+.menu-hamburger {
+  display: none; /* caché par défaut sur grand écran */
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 1001; /* au-dessus du menu */
+  color: #003366; /* couleur du hamburger */
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .menu-hamburger {
+    display: block; /* visible aux petits écrans */
+  }
+
+  .sidebar {
+    transform: translateX(-100%); /* menu caché par défaut */
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar.active {
+    transform: translateX(0); /* menu visible quand actif */
+  }
+}
+
+@media (max-width: 600px) {
+  .menu-hamburger {
+    left: 10px;
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 400px) {
+  .menu-hamburger {
+    left: 8px;
+    font-size: 25px;
+  }
+}
+
+</style>
+
+<script>
+  const menu = document.getElementById("menu-hamburger");
+const sidebar = document.getElementById("sidebar");
+
+menu.addEventListener('click', () => {
+  sidebar.classList.toggle("active");
+});
+
+</script>
+
+  <section class="tent">
+    <!-- Modèle 7 : Suivi consommation par compteur -->
+<div class="table-block">
+  <h2>Gestion Énergie Électrique (Modèle 7)</h2>
+  <div class="buttons">
+    <button class="btn" id="exportExcelEnergy7">Télécharger Excel</button>
+    <button class="btn" id="exportPDFEnergy7">Télécharger PDF</button>
+  </div>
+  <table id="energyTable7">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Compteur</th>
+        <th>Consommation (kWh)</th>
+        <th>Coût unitaire</th>
+        <th>Montant</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>01/08/2025</td><td>Compteur 1</td><td></td><td></td><td></td></tr>
+      <tr><td>01/08/2025</td><td>Compteur 2</td><td></td><td></td><td></td></tr>
+      <tr><td>01/08/2025</td><td>Compteur 3</td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modèle 8 : Analyse consommation globale -->
+<div class="table-block">
+  <h2>Gestion Énergie Électrique (Modèle 8)</h2>
+  <div class="buttons">
+    <button class="btn" id="exportExcelEnergy8">Télécharger Excel</button>
+    <button class="btn" id="exportPDFEnergy8">Télécharger PDF</button>
+  </div>
+  <table id="energyTable8">
+    <thead>
+      <tr>
+        <th>Mois</th>
+        <th>Consommation Totale (kWh)</th>
+        <th>Coût Total</th>
+        <th>Écart par rapport au Budget</th>
+        <th>% Budget Réalisé</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Janvier</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Février</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Mars</td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modèle 9 : Suivi par zone -->
+<div class="table-block">
+  <h2>Gestion Énergie Électrique (Modèle 9)</h2>
+  <div class="buttons">
+    <button class="btn" id="exportExcelEnergy9">Télécharger Excel</button>
+    <button class="btn" id="exportPDFEnergy9">Télécharger PDF</button>
+  </div>
+  <table id="energyTable9">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Zone</th>
+        <th>Consommation (kWh)</th>
+        <th>Coût unitaire</th>
+        <th>Montant</th>
+        <th>Écart Budget</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>01/08/2025</td><td>Zone A</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>01/08/2025</td><td>Zone B</td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modèle 10 : Prévision et analyse des pics -->
+<div class="table-block">
+  <h2>Gestion Énergie Électrique (Modèle 10)</h2>
+  <div class="buttons">
+    <button class="btn" id="exportExcelEnergy10">Télécharger Excel</button>
+    <button class="btn" id="exportPDFEnergy10">Télécharger PDF</button>
+  </div>
+  <table id="energyTable10">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Consommation (kWh)</th>
+        <th>Variation Journalière (%)</th>
+        <th>Coût unitaire</th>
+        <th>Montant</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>01/08/2025</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>02/08/2025</td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+</div>
+
+
+<div class="table-block">
+  <h2>Gestion Énergie Électrique (Modèle 11)</h2>
+  <div class="buttons">
+    <button class="btn" id="exportExcelEnergy11">Télécharger Excel</button>
+    <button class="btn" id="exportPDFEnergy11">Télécharger PDF</button>
+  </div>
+  <table id="energyTable11">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Département</th>
+        <th>Consommation (kWh)</th>
+        <th>Seuil Max</th>
+        <th>Alerte</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>01/08/2025</td><td>Département A</td><td></td><td>100</td><td></td></tr>
+      <tr><td>01/08/2025</td><td>Département B</td><td></td><td>120</td><td></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modèle 12 : Comparaison mensuelle par jour -->
+<div class="table-block">
+  <h2>Gestion Énergie Électrique (Modèle 12)</h2>
+  <div class="buttons">
+    <button class="btn" id="exportExcelEnergy12">Télécharger Excel</button>
+    <button class="btn" id="exportPDFEnergy12">Télécharger PDF</button>
+  </div>
+  <table id="energyTable12">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Consommation (kWh)</th>
+        <th>Budget Journalier</th>
+        <th>Écart</th>
+        <th>% Écart</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>01/08/2025</td><td></td><td>100</td><td></td><td></td></tr>
+      <tr><td>02/08/2025</td><td></td><td>100</td><td></td><td></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modèle 13 : Suivi consommation par équipement -->
+<div class="table-block">
+  <h2>Gestion Énergie Électrique (Modèle 13)</h2>
+  <div class="buttons">
+    <button class="btn" id="exportExcelEnergy13">Télécharger Excel</button>
+    <button class="btn" id="exportPDFEnergy13">Télécharger PDF</button>
+  </div>
+  <table id="energyTable13">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Équipement</th>
+        <th>Consommation (kWh)</th>
+        <th>Seuil Max</th>
+        <th>Efficacité (%)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>01/08/2025</td><td>Climatisation</td><td></td><td>50</td><td></td></tr>
+      <tr><td>01/08/2025</td><td>Éclairage</td><td></td><td>30</td><td></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modèle 14 : Comparatif mensuel par service -->
+<div class="table-block">
+  <h2>Gestion Énergie Électrique (Modèle 14)</h2>
+  <div class="buttons">
+    <button class="btn" id="exportExcelEnergy14">Télécharger Excel</button>
+    <button class="btn" id="exportPDFEnergy14">Télécharger PDF</button>
+  </div>
+  <table id="energyTable14">
+    <thead>
+      <tr>
+        <th>Mois</th>
+        <th>Service</th>
+        <th>Consommation (kWh)</th>
+        <th>Mois Précédent</th>
+        <th>Variation</th>
+        <th>% Variation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Août</td><td>IT</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Août</td><td>Production</td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+  
+ <style>
+.table-block {
+  margin-bottom: 30px;
+  overflow-x: auto; /* permet le scroll horizontal si écran petit */
+}
+
+
+    @media (max-width: 768px) {
+  .tent {
+    margin-left: 0; /* contenu prend toute la largeur */
+    padding: 15px;
+  }
+
+  .sidebar.active ~ .tent {
+    margin-left: 250px; /* si le menu est ouvert, décaler le contenu */
+  }
+
+  .table-block table {
+    font-size: 14px; /* réduire la taille du texte sur mobile */
+  }
+}
+
+@media (max-width: 600px) {
+  .tent {
+    padding: 10px;
+  }
+
+  .table-block table {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 400px) {
+  .table-block table {
+    font-size: 12px;
+  }
+}
+   </style>
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+
+  <script>
+// ---------- Modèle 7 : Suivi consommation ----------
+document.getElementById("exportExcelEnergy7").addEventListener("click", async function() {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet("Consommation Compteurs");
+
+    sheet.addRow(["Date","Compteur","Consommation (kWh)","Coût unitaire","Montant"]);
+    const header = sheet.getRow(1);
+    header.font={bold:true,color:{argb:'FFFFFFFF'}};
+    header.fill={type:'pattern',pattern:'solid',fgColor:{argb:'4472C4'}};
+    header.alignment={horizontal:'center'};
+    sheet.columns=[{width:15},{width:15},{width:18},{width:15},{width:18}];
+
+    for(let i=2;i<=1000;i++){
+        sheet.addRow([null,null,null,null,null]);
+        sheet.getCell(`E${i}`).value={formula:`C${i}*D${i}`}; // Montant = Consommation * Coût unitaire
+    }
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    saveAs(new Blob([buffer]), "Consommation_Compteurs.xlsx");
+});
+
+document.getElementById("exportPDFEnergy7").addEventListener("click", function() {
+    const { jsPDF }=window.jspdf;
+    const doc=new jsPDF();
+    const body=[];
+    for(let i=1;i<=20;i++){ body.push(["","","","",""]); }
+    doc.setFontSize(14);
+    doc.text("Gestion Énergie Électrique (Modèle 7)",60,15);
+    doc.autoTable({
+        startY:25,
+        head:[["Date","Compteur","Consommation (kWh)","Coût unitaire","Montant"]],
+        body:body,
+        theme:"grid",
+        headStyles:{fillColor:[52,152,219],textColor:255,halign:"center"},
+        bodyStyles:{halign:"center"},
+        alternateRowStyles:{fillColor:[240,240,240]}
+    });
+    doc.save("Consommation_Compteurs.pdf");
+});
+
+// ---------- Modèle 8 : Analyse consommation globale ----------
+document.getElementById("exportExcelEnergy8").addEventListener("click", async function() {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet("Analyse Consommation");
+
+    sheet.addRow(["Mois","Consommation Totale (kWh)","Coût Total","Écart par rapport au Budget","% Budget Réalisé"]);
+    const header = sheet.getRow(1);
+    header.font={bold:true,color:{argb:'FFFFFFFF'}};
+    header.fill={type:'pattern',pattern:'solid',fgColor:{argb:'4472C4'}};
+    header.alignment={horizontal:'center'};
+    sheet.columns=[{width:15},{width:20},{width:18},{width:20},{width:18}];
+
+    for(let i=2;i<=1000;i++){
+        sheet.addRow([null,null,null,null,null]);
+        sheet.getCell(`D${i}`).value={formula:`C${i}-B${i}*10`}; // Exemple d'écart simple
+        sheet.getCell(`E${i}`).value={formula:`C${i}/B${i}*100`}; // % Budget Réalisé
+    }
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    saveAs(new Blob([buffer]), "Analyse_Consommation.xlsx");
+});
+
+document.getElementById("exportPDFEnergy8").addEventListener("click", function() {
+    const { jsPDF }=window.jspdf;
+    const doc=new jsPDF();
+    const body=[];
+    for(let i=1;i<=20;i++){ body.push(["","","","",""]); }
+    doc.setFontSize(14);
+    doc.text("Gestion Énergie Électrique (Modèle 8)",60,15);
+    doc.autoTable({
+        startY:25,
+        head:[["Mois","Consommation Totale (kWh)","Coût Total","Écart par rapport au Budget","% Budget Réalisé"]],
+        body:body,
+        theme:"grid",
+        headStyles:{fillColor:[52,152,219],textColor:255,halign:"center"},
+        bodyStyles:{halign:"center"},
+        alternateRowStyles:{fillColor:[240,240,240]}
+    });
+    doc.save("Analyse_Consommation.pdf");
+});
+</script>
+
+
+<script>
+// ---------- Modèle 9 : Suivi par zone ----------
+document.getElementById("exportExcelEnergy9").addEventListener("click", async function() {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet("Suivi par Zone");
+
+    sheet.addRow(["Date","Zone","Consommation (kWh)","Coût unitaire","Montant","Écart Budget"]);
+    const header = sheet.getRow(1);
+    header.font={bold:true,color:{argb:'FFFFFFFF'}};
+    header.fill={type:'pattern',pattern:'solid',fgColor:{argb:'4472C4'}};
+    header.alignment={horizontal:'center'};
+    sheet.columns=[{width:15},{width:15},{width:18},{width:15},{width:18},{width:18}];
+
+    for(let i=2;i<=1000;i++){
+        sheet.addRow([null,null,null,null,null,null]);
+        sheet.getCell(`E${i}`).value={formula:`C${i}*D${i}`};      // Montant = Consommation * Coût unitaire
+        sheet.getCell(`F${i}`).value={formula:`E${i}-100`};         // Écart Budget = Montant - Budget 100 (exemple)
+    }
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    saveAs(new Blob([buffer]), "Suivi_Zone.xlsx");
+});
+
+document.getElementById("exportPDFEnergy9").addEventListener("click", function() {
+    const { jsPDF }=window.jspdf;
+    const doc=new jsPDF();
+    const body=[];
+    for(let i=1;i<=20;i++){ body.push(["","","","","",""]); }
+    doc.setFontSize(14);
+    doc.text("Gestion Énergie Électrique (Modèle 9)",60,15);
+    doc.autoTable({
+        startY:25,
+        head:[["Date","Zone","Consommation (kWh)","Coût unitaire","Montant","Écart Budget"]],
+        body:body,
+        theme:"grid",
+        headStyles:{fillColor:[52,152,219],textColor:255,halign:"center"},
+        bodyStyles:{halign:"center"},
+        alternateRowStyles:{fillColor:[240,240,240]}
+    });
+    doc.save("Suivi_Zone.pdf");
+});
+
+// ---------- Modèle 10 : Prévision et pics ----------
+document.getElementById("exportExcelEnergy10").addEventListener("click", async function() {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet("Prévision & Pics");
+
+    sheet.addRow(["Date","Consommation (kWh)","Variation Journalière (%)","Coût unitaire","Montant"]);
+    const header = sheet.getRow(1);
+    header.font={bold:true,color:{argb:'FFFFFFFF'}};
+    header.fill={type:'pattern',pattern:'solid',fgColor:{argb:'4472C4'}};
+    header.alignment={horizontal:'center'};
+    sheet.columns=[{width:15},{width:18},{width:20},{width:15},{width:18}];
+
+    for(let i=2;i<=1000;i++){
+        sheet.addRow([null,null,null,null,null]);
+        sheet.getCell(`C${i}`).value={formula:`(B${i}-B${i-1})/B${i-1}*100`}; // Variation journalière %
+        sheet.getCell(`E${i}`).value={formula:`B${i}*D${i}`};                     // Montant = Consommation * Coût unitaire
+    }
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    saveAs(new Blob([buffer]), "Prevision_Pics.xlsx");
+});
+
+document.getElementById("exportPDFEnergy10").addEventListener("click", function() {
+    const { jsPDF }=window.jspdf;
+    const doc=new jsPDF();
+    const body=[];
+    for(let i=1;i<=20;i++){ body.push(["","","","",""]); }
+    doc.setFontSize(14);
+    doc.text("Gestion Énergie Électrique (Modèle 10)",60,15);
+    doc.autoTable({
+        startY:25,
+        head:[["Date","Consommation (kWh)","Variation Journalière (%)","Coût unitaire","Montant"]],
+        body:body,
+        theme:"grid",
+        headStyles:{fillColor:[52,152,219],textColor:255,halign:"center"},
+        bodyStyles:{halign:"center"},
+        alternateRowStyles:{fillColor:[240,240,240]}
+    });
+    doc.save("Prevision_Pics.pdf");
+});
+</script>
+
+<!-- Modèle 11 : Suivi consommation par département -->
+<script>
+// ---------- Modèle 11 ----------
+document.getElementById("exportExcelEnergy11").addEventListener("click", async function() {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet("Consommation Départements");
+
+    sheet.addRow(["Date","Département","Consommation (kWh)","Seuil Max","Alerte"]);
+    const header = sheet.getRow(1);
+    header.font={bold:true,color:{argb:'FFFFFFFF'}};
+    header.fill={type:'pattern',pattern:'solid',fgColor:{argb:'4472C4'}};
+    header.alignment={horizontal:'center'};
+    sheet.columns=[{width:15},{width:18},{width:18},{width:15},{width:15}];
+
+    for(let i=2;i<=1000;i++){
+        sheet.addRow([null,null,null,null,null]);
+        sheet.getCell(`E${i}`).value={formula:`IF(C${i}>D${i},"Dépassement","OK")`};
+    }
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    saveAs(new Blob([buffer]), "Consommation_Departement.xlsx");
+});
+
+document.getElementById("exportPDFEnergy11").addEventListener("click", function() {
+    const { jsPDF }=window.jspdf;
+    const doc=new jsPDF();
+    const body=[];
+    for(let i=1;i<=20;i++){ body.push(["","","","",""]); }
+    doc.setFontSize(14);
+    doc.text("Gestion Énergie Électrique (Modèle 11)",60,15);
+    doc.autoTable({
+        startY:25,
+        head:[["Date","Département","Consommation (kWh)","Seuil Max","Alerte"]],
+        body:body,
+        theme:"grid",
+        headStyles:{fillColor:[52,152,219],textColor:255,halign:"center"},
+        bodyStyles:{halign:"center"},
+        alternateRowStyles:{fillColor:[240,240,240]}
+    });
+    doc.save("Consommation_Departement.pdf");
+});
+
+// ---------- Modèle 12 ----------
+document.getElementById("exportExcelEnergy12").addEventListener("click", async function() {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet("Comparaison Mensuelle");
+
+    sheet.addRow(["Date","Consommation (kWh)","Budget Journalier","Écart","% Écart"]);
+    const header = sheet.getRow(1);
+    header.font={bold:true,color:{argb:'FFFFFFFF'}};
+    header.fill={type:'pattern',pattern:'solid',fgColor:{argb:'4472C4'}};
+    header.alignment={horizontal:'center'};
+    sheet.columns=[{width:15},{width:18},{width:18},{width:15},{width:15}];
+
+    for(let i=2;i<=1000;i++){
+        sheet.addRow([null,null,null,null,null]);
+        sheet.getCell(`D${i}`).value={formula:`B${i}-C${i}`};
+        sheet.getCell(`E${i}`).value={formula:`IF(C${i}=0,0,D${i}/C${i}*100)`};
+    }
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    saveAs(new Blob([buffer]), "Comparaison_Mensuelle.xlsx");
+});
+
+document.getElementById("exportPDFEnergy12").addEventListener("click", function() {
+    const { jsPDF }=window.jspdf;
+    const doc=new jsPDF();
+    const body=[];
+    for(let i=1;i<=20;i++){ body.push(["","","","",""]); }
+    doc.setFontSize(14);
+    doc.text("Gestion Énergie Électrique (Modèle 12)",60,15);
+    doc.autoTable({
+        startY:25,
+        head:[["Date","Consommation (kWh)","Budget Journalier","Écart","% Écart"]],
+        body:body,
+        theme:"grid",
+        headStyles:{fillColor:[52,152,219],textColor:255,halign:"center"},
+        bodyStyles:{halign:"center"},
+        alternateRowStyles:{fillColor:[240,240,240]}
+    });
+    doc.save("Comparaison_Mensuelle.pdf");
+});
+</script>
+
+
+
+<script>
+// ---------- Modèle 13 ----------
+document.getElementById("exportExcelEnergy13").addEventListener("click", async function() {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet("Consommation Equipements");
+
+    sheet.addRow(["Date","Équipement","Consommation (kWh)","Seuil Max","Efficacité (%)"]);
+    const header = sheet.getRow(1);
+    header.font={bold:true,color:{argb:'FFFFFFFF'}};
+    header.fill={type:'pattern',pattern:'solid',fgColor:{argb:'4472C4'}};
+    header.alignment={horizontal:'center'};
+    sheet.columns=[{width:15},{width:18},{width:18},{width:15},{width:15}];
+
+    for(let i=2;i<=1000;i++){
+        sheet.addRow([null,null,null,null,null]);
+        sheet.getCell(`E${i}`).value={formula:`IF(C${i}=0,0,MIN(C${i}/D${i}*100,100))`};
+    }
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    saveAs(new Blob([buffer]), "Consommation_Equipements.xlsx");
+});
+
+document.getElementById("exportPDFEnergy13").addEventListener("click", function() {
+    const { jsPDF }=window.jspdf;
+    const doc=new jsPDF();
+    const body=[];
+    for(let i=1;i<=20;i++){ body.push(["","","","",""]); }
+    doc.setFontSize(14);
+    doc.text("Gestion Énergie Électrique (Modèle 13)",60,15);
+    doc.autoTable({
+        startY:25,
+        head:[["Date","Équipement","Consommation (kWh)","Seuil Max","Efficacité (%)"]],
+        body:body,
+        theme:"grid",
+        headStyles:{fillColor:[52,152,219],textColor:255,halign:"center"},
+        bodyStyles:{halign:"center"},
+        alternateRowStyles:{fillColor:[240,240,240]}
+    });
+    doc.save("Consommation_Equipements.pdf");
+});
+
+// ---------- Modèle 14 ----------
+document.getElementById("exportExcelEnergy14").addEventListener("click", async function() {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet("Comparatif Mensuel Service");
+
+    sheet.addRow(["Mois","Service","Consommation (kWh)","Mois Précédent","Variation","% Variation"]);
+    const header = sheet.getRow(1);
+    header.font={bold:true,color:{argb:'FFFFFFFF'}};
+    header.fill={type:'pattern',pattern:'solid',fgColor:{argb:'4472C4'}};
+    header.alignment={horizontal:'center'};
+    sheet.columns=[{width:15},{width:18},{width:18},{width:15},{width:15},{width:15}];
+
+    for(let i=2;i<=1000;i++){
+        sheet.addRow([null,null,null,null,null,null]);
+        sheet.getCell(`E${i}`).value={formula:`C${i}-D${i}`};
+        sheet.getCell(`F${i}`).value={formula:`IF(D${i}=0,0,E${i}/D${i}*100)`};
+    }
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    saveAs(new Blob([buffer]), "Comparatif_Service.xlsx");
+});
+
+document.getElementById("exportPDFEnergy14").addEventListener("click", function() {
+    const { jsPDF }=window.jspdf;
+    const doc=new jsPDF();
+    const body=[];
+    for(let i=1;i<=20;i++){ body.push(["","","","","",""]); }
+    doc.setFontSize(14);
+    doc.text("Gestion Énergie Électrique (Modèle 14)",60,15);
+    doc.autoTable({
+        startY:25,
+        head:[["Mois","Service","Consommation (kWh)","Mois Précédent","Variation","% Variation"]],
+        body:body,
+        theme:"grid",
+        headStyles:{fillColor:[52,152,219],textColor:255,halign:"center"},
+        bodyStyles:{halign:"center"},
+        alternateRowStyles:{fillColor:[240,240,240]}
+    });
+    doc.save("Comparatif_Service.pdf");
+});
+</script>
+
+
+</body>
+</html>

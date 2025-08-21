@@ -1,0 +1,224 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f6fa;
+  color: #2c3e50;
+}
+
+/* SIDEBAR */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 260px;
+  height: 100vh;
+  background: linear-gradient(180deg, #002147, #001433);
+  padding: 20px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sidebar h1 {
+  color: #fff;
+  font-size: 28px;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+/* Bouton Vue d'ensemble */
+.canvas {
+  width: 70%;
+  padding: 12px 18px;
+  margin-bottom: 25px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  background-color: #34495e;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.canvas:hover {
+  background: linear-gradient(90deg, #0077b6, #0096c7);
+  transform: translateY(-2px);
+}
+
+/* Liens menu sidebar */
+.sidebar .grid-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+.sidebar .menu-item {
+  background-color: #2c3e50;
+  padding: 12px 15px;
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.3s;
+}
+.sidebar .menu-item:hover {
+  background: #1abc9c;
+}
+
+/* CONTENU CENTRAL */
+.centre {
+  margin-left: 280px; /* espace pour sidebar */
+  padding: 40px;
+  min-height: 100vh;
+}
+
+.main-content {
+  max-width: 1100px;
+  margin: auto;
+  text-align: center;
+}
+
+.main-content h2 {
+  font-size: 26px;
+  margin-bottom: 25px;
+  color: #2c3e50;
+  font-weight: 700;
+}
+
+/* GRID DES APPLICATIONS */
+.grid-menu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 25px;
+}
+
+.grid-menu .menu-item {
+  background: white;
+  border-radius: 12px;
+  padding: 25px 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  color: #2c3e50;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  transition: 0.3s;
+}
+
+.grid-menu .menu-item i {
+  font-size: 28px;
+  color: #1abc9c;
+}
+
+.grid-menu .menu-item:hover {
+  transform: translateY(-5px);
+  background: #f0f9f7;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px;
+  }
+  .centre {
+    margin-left: 210px;
+    padding: 20px;
+  }
+}
+
+img{
+    height: 90px;           /* taille du logo */
+  width: 130px;            /* garder les proportions */
+  margin-right: 15px;     /* espace entre logo et "Accueil" */
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  margin-left: 45px;
+}
+
+
+
+/* Section principale avec 2 colonnes et 2 lignes */
+.tent {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 colonnes */
+  grid-template-rows: auto auto; /* 2 lignes */
+  gap: 30px 40px; /* espaces entre blocs */
+  padding: 20px;
+  margin-left: 300px; /* espace pour le menu latéral */
+  box-sizing: border-box;
+}
+
+/* Chaque bloc tableau */
+.table-block {
+  background: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Boutons toujours au-dessus du tableau */
+.buttons {
+  text-align: right;
+  margin-bottom: 10px;
+  margin-right: 110px;
+}
+
+.btn {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  margin-left: 5px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: 0.3s;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.btn:hover {
+  background: #2980b9;
+}
+
+/* Tableaux */
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  font-size: 0.95em;
+}
+
+thead {
+  background: #3498db;
+  color: white;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+tbody tr:nth-child(even) {
+  background: #f9f9f9;
+}

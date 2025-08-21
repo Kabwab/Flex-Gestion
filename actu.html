@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Compte - Pro Tech</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="Accueil.css">
+
+   <link rel="stylesheet" href="fontawesome-free-6.5.1-web/fontawesome-free-6.5.1-web/css/all.min.css">
+     <link rel="icon" href="AB12.png" type="image/png">
+</head>
+<body>
+<header class="Call">
+  <!-- Logo -->
+  <img src="AB12.png" alt="" class="logo">
+
+  <!-- Menu entier -->
+  <div class="menu-container" id="menuContainer">
+    <!-- Liens de navigation -->
+    <ul class="nav-links">
+      <li><a href="actu.html">Accueil ▼</a></li>
+      <li><a href="premuin.html">Découvrez des Modèles ▼</a></li>
+      <li><a href="propos.html">A Propos de Nous ▼</a></li>
+    </ul>
+
+    <!-- Bouton action -->
+    <a href="Index.html" class="cta-button">Se Déconnecter</a>
+  </div>
+
+  <!-- Bouton hamburger -->
+  <div class="menu-hamburger" id="menuHamburger">
+    &#9776;
+  </div>
+</header>
+
+<style>
+/* --- Menu normal grand écran (>768px) --- */
+.menu-container {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+
+
+.menu-hamburger {
+  display: none; /* caché sur grand écran */
+  font-size: 25px;
+  color: black;
+  cursor: pointer;
+}
+
+/* --- Petits écrans ≤768px --- */
+@media (max-width: 768px) {
+  .menu-container {
+    display: none; /* caché par défaut */
+    flex-direction: column;
+    background: #003366;
+    position: absolute;
+    right: 0;
+    top: 60px;
+    width: 200px;
+    padding: 15px;
+    z-index: 1000;
+  }
+
+  .menu-container.active {
+    display: flex; /* affiché uniquement si hamburger cliqué */
+  }
+
+  .menu-hamburger {
+    display: block; /* hamburger visible */
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: white;
+    background: #003366;
+    padding: 5px 10px;
+    border-radius: 4px;
+    z-index: 1001;
+  }
+
+  /* Liens et bouton style petits écrans */
+  .menu-container .nav-links li, 
+  .menu-container .cta-button {
+    text-align: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #fff;
+    color: white;
+    text-decoration: none;
+  }
+
+  /* Pleine largeur pour ≤600px */
+  @media (max-width: 600px) {
+    .menu-container {
+      width: 100%;
+      top: 50px;
+    }
+  }
+
+  /* Ajustements très petits écrans ≤400px */
+  @media (max-width: 400px) {
+    .menu-container {
+      font-size: 14px;
+      padding: 10px;
+    }
+
+    .menu-container .nav-links li, 
+    .menu-container .cta-button {
+      padding: 10px 0;
+    }
+  }
+}
+</style>
+
+<script>
+const menuHamburger = document.getElementById("menuHamburger");
+const menuContainer = document.getElementById("menuContainer");
+
+menuHamburger.addEventListener("click", () => {
+  menuContainer.classList.toggle("active");
+});
+</script>
+
+
+
+
+  <section class="welcome-section">
+  <div class="container">
+    <h1>Bienvenue sur notre plateforme innovante Flex Gestion</h1>
+    <p>
+      Notre mission est de vous offrir les outils numériques les plus performants pour optimiser la gestion de vos données et bien plus encore.
+      Grâce à notre interface intuitive et nos fonctionnalités avancées, gérer vos données proffessionelles devient simple, rapide et efficace.
+    </p>
+    <p>
+      Nous mettons à votre disposition des tableaux interactifs, des rapports exportables, ainsi qu’un système de suivi en temps réel pour prendre les meilleures décisions stratégiques.
+      Que vous soyez une petite entreprise ou une grande structure, notre solution s’adapte à vos besoins spécifiques.
+    </p>
+    <p>
+      Rejoignez notre communauté d’utilisateurs satisfaits et découvrez comment la technologie peut transformer votre gestion quotidienne.
+      Notre équipe support est disponible 24/7 pour vous accompagner et vous assurer une expérience fluide et productive.
+    </p>
+    <a href="Premuin.html" class="btn-primary">Commencer maintenant</a>
+  </div>
+</section>
+
+
+
+  <section class="features">
+    <div class="feature">
+      <i class="fas fa-download"></i>
+      <h3>Documents Téléchargeables</h3>
+      <p>Des fichiers PDF et Excel professionnels prêts à l'emploi.</p>
+    </div>
+    <div class="feature">
+      <i class="fas fa-chart-bar"></i>
+      <h3>Visualisation Graphique</h3>
+      <p>Suivez vos stocks grâce à des graphiques clairs et simples.</p>
+    </div>
+    <div class="feature">
+      <i class="fas fa-user-check"></i>
+      <h3>Expérience Utilisateur</h3>
+      <p>Une interface intuitive et rapide à prendre en main.</p>
+    </div>
+  </section>
+
+
+<div class="mark">
+    <h1>Voici un modèle simple et général de la gestion de donnés stock </h1>
+</div>
+
+<div class="btns">
+    <button onclick="telechargerPDF()">📄 Télécharger en PDF</button>
+    <button onclick="telechargerExcel()">📊 Télécharger en Excel</button>
+  </div>
+
+
+
+  <div id="table-container">
+   
+    <table id="stock-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Produit</th>
+          <th>Quantité</th>
+          <th>Prix Unitaire ($)</th>
+          <th>Prix Total ($)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2025-08-04</td>
+          <td>Pommes</td>
+          <td>50</td>
+          <td>0.50</td>
+          <td>25.00</td>
+        </tr>
+        <tr>
+          <td>2025-08-04</td>
+          <td>Tomates</td>
+          <td>30</td>
+          <td>0.60</td>
+          <td>18.00</td>
+        </tr>
+        <tr>
+          <td>2025-08-04</td>
+          <td>Riz</td>
+          <td>100</td>
+          <td>1.20</td>
+          <td>120.00</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+
+  <section class="mission-vision">
+  <div class="container">
+    <h2>Notre Mission et Vision</h2>
+    <p>
+      Chez nous, la mission est claire : fournir des solutions innovantes qui transforment la gestion quotidienne en une expérience simple et efficace. Nous croyons fermement que la technologie doit être accessible à tous, sans compromis sur la qualité ni la performance.
+    </p>
+    <p>
+      Notre vision est de devenir le partenaire incontournable des entreprises et entrepreneurs qui souhaitent optimiser leurs processus grâce à des outils numériques adaptés, sécurisés et faciles à utiliser.
+    </p>
+    <p>
+      Nous nous engageons à accompagner chaque utilisateur avec un support réactif, des mises à jour constantes et une interface intuitive. Notre plateforme est pensée pour évoluer avec vos besoins et vous aider à relever les défis de demain.
+    </p>
+    <p>
+      Rejoignez-nous dans cette aventure où innovation rime avec simplicité, et où chaque fonctionnalité est conçue pour vous faire gagner du temps et améliorer votre productivité.
+    </p>
+    
+  </div>
+</section>
+
+
+
+<section class="cta-section">
+  <h2>Prêt à optimiser votre gestion ?</h2>
+  <p>Rejoignez des centaines d’utilisateurs satisfaits et gagnez du temps au quotidien.</p>
+ <a href="https://wa.me/243981702835?text=Bonjour%2C%20je%20souhaite%20avoir%20plus%20d'informations%20sur%20vos%20services." target="_blank" class="btn-primary">
+  Contactez-nous
+</a>
+
+</section>
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Graphique -->
+  <canvas id="chart" width="600" height="400"></canvas>
+
+
+
+
+<footer>
+        <div class="Contacts-container">
+            <div class="contact-items">
+                <img src="images/A.png" alt="Téléphone">
+                <p>Appelez-Nous</p>
+                <strong>+243981702835</strong>
+            </div>
+            <div class="contact-items">
+                <img src="images/D.png" alt="WhatsApp">
+                <p>Lancez une discussion</p>
+                <strong>+243826769760</strong>
+            </div>
+            <div class="contact-items">
+                <img src="images/C.png" alt="Email">
+                <p>Avez-vous des questions ?</p>
+                <strong><a href="mailto:Lespro@gmail.com">malulamicho5@gmail.com</a></strong>
+            </div>
+            <div class="contact-items">
+                <img src="images/B.png" alt="Adresse">
+                <p>7518, AV/SHAUMBA, COMMUNE DE LA GOMBE</p>
+            </div>
+        </div>
+        <div class="footer-slogan">
+            <p> My Budget, votre partenaire de confiance pour un avenir financier stable.</p>
+        </div>
+    </footer>
+
+
+   
+  
+
+ 
+ 
+  
+  <script>
+    // Fonction Excel stylé
+    function telechargerExcel() {
+      const table = document.getElementById("stock-table");
+      const wb = XLSX.utils.book_new();
+      const ws = XLSX.utils.table_to_sheet(table, { raw: true });
+
+      // Ajuster largeur automatique
+      const data = XLSX.utils.sheet_to_json(ws, { header: 1 });
+      const colWidths = data[0].map((_, colIndex) => {
+        const maxLength = Math.max(...data.map(row => (row[colIndex] || "").toString().length));
+        return { wch: maxLength + 5 };
+      });
+      ws['!cols'] = colWidths;
+
+      XLSX.utils.book_append_sheet(wb, ws, "Stock");
+      XLSX.writeFile(wb, "modele_gestion_stock.xlsx");
+    }
+
+    // Fonction PDF avec tableau stylé
+    async function telechargerPDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+
+      doc.setFontSize(16);
+      doc.text("Modèle de Gestion de Stock", 70, 10);
+
+      const table = document.getElementById("stock-table");
+      const rows = [...table.rows].map(row => [...row.cells].map(cell => cell.innerText));
+
+      doc.autoTable({
+        head: [rows[0]],
+        body: rows.slice(1),
+        startY: 20,
+        styles: { fontSize: 10, cellPadding: 2 },
+        headStyles: { fillColor: [41, 128, 185], textColor: 255 },
+        alternateRowStyles: { fillColor: [240, 240, 240] },
+      });
+
+      // Graphique en barre dans le PDF
+      const canvas = document.getElementById('chart');
+      const chartImage = canvas.toDataURL('image/png');
+      doc.addPage();
+      doc.text("Quantité par Produit", 80, 10);
+      doc.addImage(chartImage, 'PNG', 15, 20, 180, 100);
+
+      doc.save("modele_gestion_stock.pdf");
+    }
+
+  </script>
+</body>
+</html>

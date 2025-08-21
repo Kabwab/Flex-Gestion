@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Autre.css">
+      <link rel="stylesheet" href="fontawesome-free-6.5.1-web/fontawesome-free-6.5.1-web/css/all.min.css">
+  <link rel="icon" href="AB12.png" type="image/png">
+</head>
+<body>
+ 
+<!-- MENU HAMBURGER -->
+<div id="menu-hamburger" class="menu-hamburger">
+  &#9776;
+</div>
+
+<nav class="sidebar" id="sidebar">
+  <img src="AB12.png" alt="Logo">
+
+  <a href="actu.html" class="canvas"><i class="fas fa-home"></i> Vue d'ensemble</a>
+
+  <div class="grid-menu">
+    <a href="premuin.html" class="menu-item">
+      <i class="fas fa-calculator"></i>
+      <span>Modèles</span>
+    </a>
+
+    <a href="avis.html" class="menu-item">
+      <i class="fas fa-comment-dots"></i>
+      <span>Votre avis</span>
+    </a>
+
+    <a href="propos.html" class="menu-item">
+      <i class="fas fa-info-circle"></i>
+      <span>A Propos</span>
+    </a>
+  </div>
+</nav>
+
+
+
+<style>
+  /* --- Hamburger --- */
+.menu-hamburger {
+  display: none; /* caché par défaut sur grand écran */
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 1001; /* au-dessus du menu */
+  color: #003366; /* couleur du hamburger */
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .menu-hamburger {
+    display: block; /* visible aux petits écrans */
+  }
+
+  .sidebar {
+    transform: translateX(-100%); /* menu caché par défaut */
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar.active {
+    transform: translateX(0); /* menu visible quand actif */
+  }
+}
+
+@media (max-width: 600px) {
+  .menu-hamburger {
+    left: 10px;
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 400px) {
+  .menu-hamburger {
+    left: 8px;
+    font-size: 25px;
+  }
+}
+
+</style>
+
+<script>
+  const menu = document.getElementById("menu-hamburger");
+const sidebar = document.getElementById("sidebar");
+
+menu.addEventListener('click', () => {
+  sidebar.classList.toggle("active");
+});
+
+</script>
+
+      
+
+   <section class="tent">
+    <div class="table-block">
+  <h2>Suivi des Fournisseurs</h2>
+  <div class="buttons">
+    <button class="btn" id="exportExcelFournisseurs">Télécharger Excel</button>
+    <button class="btn" id="exportPDFFournisseurs">Télécharger PDF</button>
+  </div>
+  <table id="fournisseursTable">
+    <thead>
+      <tr>
+        <th>Fournisseur</th>
+        <th>Produit</th>
+        <th>Quantité Livrée</th>
+        <th>Quantité Acceptée</th>
+        <th>Écart</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td><td></td><td></td><td></td><td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="table-block">
+  <h2>Gestion des Contrats Clients</h2>
+  <div class="buttons">
+    <button class="btn" id="exportExcelClients">Télécharger Excel</button>
+    <button class="btn" id="exportPDFClients">Télécharger PDF</button>
+  </div>
+  <table id="clientsTable">
+    <thead>
+      <tr>
+        <th>Client</th>
+        <th>Contrat</th>
+        <th>Date Début</th>
+        <th>Date Fin</th>
+        <th>Montant</th>
+        <th>Statut</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="table-block">
+  <h2>Suivi des Projets en Cours</h2>
+  <div class="buttons">
+    <button class="btn" id="exportExcelProjets1">Télécharger Excel</button>
+    <button class="btn" id="exportPDFProjets1">Télécharger PDF</button>
+  </div>
+  <table id="projetsTable1">
+    <thead>
+      <tr>
+        <th>Projet</th>
+        <th>Responsable</th>
+        <th>Date Début</th>
+        <th>Date Fin</th>
+        <th>Budget Alloué</th>
+        <th>Budget Dépensé</th>
+        <th>Écart</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="table-block">
+  <h2>Suivi des Équipements</h2>
+  <div class="buttons">
+    <button class="btn" id="exportExcelEquipements">Télécharger Excel</button>
+    <button class="btn" id="exportPDFEquipements">Télécharger PDF</button>
+  </div>
+  <table id="equipementsTable">
+    <thead>
+      <tr>
+        <th>Équipement</th>
+        <th>Catégorie</th>
+        <th>Date Achat</th>
+        <th>Valeur Initiale</th>
+        <th>Valeur Actuelle</th>
+        <th>Amortissement</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="table-block">
+  <h2>Suivi des Contrats Fournisseurs</h2>
+  <div class="buttons">
+    <button class="btn" id="exportExcelContrats">Télécharger Excel</button>
+    <button class="btn" id="exportPDFContrats">Télécharger PDF</button>
+  </div>
+  <table id="contratsTable">
+    <thead>
+      <tr>
+        <th>Fournisseur</th>
+        <th>Contrat</th>
+        <th>Date Début</th>
+        <th>Date Fin</th>
+        <th>Montant Contrat</th>
+        <th>Montant Dépensé</th>
+        <th>Écart</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="table-block">
+  <h2>Gestion des Voitures</h2>
+  <div class="buttons">
+    <button class="btn" id="exportExcelVoitures">Télécharger Excel</button>
+    <button class="btn" id="exportPDFVoitures">Télécharger PDF</button>
+  </div>
+  <table id="voituresTable">
+    <thead>
+      <tr>
+        <th>Numéro</th>
+        <th>Marque</th>
+        <th>Modèle</th>
+        <th>Année</th>
+        <th>Kilométrage</th>
+        <th>Consommation (L/100km)</th>
+        <th>Coût Carburant</th>
+        <th>Valeur Estimée</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+   </section>
+   <style>
+.table-block {
+  margin-bottom: 30px;
+  overflow-x: auto; /* permet le scroll horizontal si écran petit */
+}
+
+
+    @media (max-width: 768px) {
+  .tent {
+    margin-left: 0; /* contenu prend toute la largeur */
+    padding: 15px;
+  }
+
+  .sidebar.active ~ .tent {
+    margin-left: 250px; /* si le menu est ouvert, décaler le contenu */
+  }
+
+  .table-block table {
+    font-size: 14px; /* réduire la taille du texte sur mobile */
+  }
+}
+
+@media (max-width: 600px) {
+  .tent {
+    padding: 10px;
+  }
+
+  .table-block table {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 400px) {
+  .table-block table {
+    font-size: 12px;
+  }
+}
+   </style>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+
+<script>
+document.getElementById("exportExcelFournisseurs").addEventListener("click", async function() {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet("Suivi Fournisseurs");
+
+    sheet.addRow(["Fournisseur","Produit","Quantité Livrée","Quantité Acceptée","Écart"]);
+    const header = sheet.getRow(1);
+    header.font = { bold:true, color:{ argb:'FFFFFFFF'} };
+    header.fill = { type:'pattern', pattern:'solid', fgColor:{ argb:'4472C4'} };
+    header.alignment = { horizontal:'center' };
+
+    sheet.columns = [
+        { width:20 }, { width:20 }, { width:18 }, { width:18 }, { width:18 }
+    ];
+
+    for(let i=2;i<=1000;i++){
+        sheet.addRow([null,null,null,null,null]);
+        sheet.getCell(`E${i}`).value = { formula:`C${i}-D${i}` };
+    }
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    saveAs(new Blob([buffer]), "SuiviFournisseurs.xlsx");
+});
+
+document.getElementById("exportPDFFournisseurs").addEventListener("click", function() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const body=[];
+    for(let i=1;i<=20;i++){ body.push(["","","","",""]); }
+
+    doc.setFontSize(14);
+    doc.text("Suivi des Fournisseurs", 40, 15);
+
+    doc.autoTable({
+        startY:25,
+        head:[["Fournisseur","Produit","Quantité Livrée","Quantité Acceptée","Écart"]],
+        body:body,
+        theme:"grid",
+        headStyles:{ fillColor:[68,114,196], textColor:255, halign:"center" },
+        bodyStyles:{ halign:"center" },
+        alternateRowStyles:{ fillColor:[240,240,240] }
+    });
+
+    doc.save("SuiviFournisseurs.pdf");
+});
+</script>
+
+<script>
+document.getElementById("exportExcelClients").addEventListener("click", async function() {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet("Contrats Clients");
+
+    sheet.addRow(["Client","Contrat","Date Début","Date Fin","Montant","Statut"]);
+    const header = sheet.getRow(1);
+    header.font = { bold:true, color:{ argb:'FFFFFFFF'} };
+    header.fill = { type:'pattern', pattern:'solid', fgColor:{ argb:'4472C4'} };
+    header.alignment = { horizontal:'center' };
+
+    sheet.columns = [
+        { width:20 }, { width:25 }, { width:18 }, { width:18 }, { width:18 }, { width:18 }
+    ];
+
+    for(let i=2;i<=1000;i++){
+        sheet.addRow([null,null,null,null,null,null]);
+        sheet.getCell(`F${i}`).value = { formula:`IF(TODAY()>D${i},"Expiré","Actif")` }; // Statut automatique
+        sheet.getCell(`E${i}`).numFmt = '#,##0.00';
+    }
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    saveAs(new Blob([buffer]), "ContratsClients.xlsx");
+});
+
+document.getElementById("exportPDFClients").addEventListener("click", function() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const body=[];
+    for(let i=1;i<=20;i++){ body.push(["","","","","",""]); }
+
+    doc.setFontSize(14);
+    doc.text("Gestion des Contrats Clients", 40, 15);
+
+    doc.autoTable({
+        startY:25,
+        head:[["Client","Contrat","Date Début","Date Fin","Montant","Statut"]],
+        body:body,
+        theme:"grid",
+        headStyles:{ fillColor:[68,114,196], textColor:255, halign:"center" },
+        bodyStyles:{ halign:"center" },
+        alternateRowStyles:{ fillColor:[240,240,240] }
+    });
+
+    doc.save("ContratsClients.pdf");
+});
+</script>
+
+
+
+<script>
+document.getElementById("exportExcelProjets1").addEventListener("click", async function() {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet("Projets en Cours");
+
+    sheet.addRow(["Projet","Responsable","Date Début","Date Fin","Budget Alloué","Budget Dépensé","Écart"]);
+    const header = sheet.getRow(1);
+    header.font = { bold:true, color:{ argb:'FFFFFFFF'} };
+    header.fill = { type:'pattern', pattern:'solid', fgColor:{ argb:'4472C4'} };
+    header.alignment = { horizontal:'center' };
+
+    sheet.columns = [
+        { width:25 }, { width:20 }, { width:18 }, { width:18 }, { width:18 }, { width:18 }, { width:18 }
+    ];
+
+    for(let i=2;i<=1000;i++){
+        sheet.addRow([null,null,null,null,null,null,null]);
+        sheet.getCell(`G${i}`).value = { formula:`E${i}-F${i}` }; // Écart
+        sheet.getCell(`E${i}`).numFmt = '#,##0.00';
+        sheet.getCell(`F${i}`).numFmt = '#,##0.00';
+        sheet.getCell(`G${i}`).numFmt = '#,##0.00';
+    }
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    saveAs(new Blob([buffer]), "ProjetsCours.xlsx");
+});
+
+document.getElementById("exportPDFProjets1").addEventListener("click", function() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const body=[];
+    for(let i=1;i<=20;i++){ body.push(["","","","","","",""]); }
+
+    doc.setFontSize(14);
+    doc.text("Suivi des Projets en Cours", 40, 15);
+
+    doc.autoTable({
+        startY:25,
+        head:[["Projet","Responsable","Date Début","Date Fin","Budget Alloué","Budget Dépensé","Écart"]],
+        body:body,
+        theme:"grid",
+        headStyles:{ fillColor:[68,114,196], textColor:255, halign:"center" },
+        bodyStyles:{ halign:"center" },
+        alternateRowStyles:{ fillColor:[240,240,240] }
+    });
+
+    doc.save("ProjetsCours.pdf");
+});
+</script>
+
+
+<script>
+document.getElementById("exportExcelEquipements").addEventListener("click", async function() {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet("Équipements");
+
+    sheet.addRow(["Équipement","Catégorie","Date Achat","Valeur Initiale","Valeur Actuelle","Amortissement"]);
+    const header = sheet.getRow(1);
+    header.font = { bold:true, color:{ argb:'FFFFFFFF'} };
+    header.fill = { type:'pattern', pattern:'solid', fgColor:{ argb:'4472C4'} };
+    header.alignment = { horizontal:'center' };
+
+    sheet.columns = [
+        { width:25 }, { width:20 }, { width:18 }, { width:18 }, { width:18 }, { width:18 }
+    ];
+
+    for(let i=2;i<=1000;i++){
+        sheet.addRow([null,null,null,null,null,null]);
+        sheet.getCell(`F${i}`).value = { formula:`D${i}-E${i}` }; // Amortissement
+        sheet.getCell(`D${i}`).numFmt = '#,##0.00';
+        sheet.getCell(`E${i}`).numFmt = '#,##0.00';
+        sheet.getCell(`F${i}`).numFmt = '#,##0.00';
+    }
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    saveAs(new Blob([buffer]), "Equipements.xlsx");
+});
+
+document.getElementById("exportPDFEquipements").addEventListener("click", function() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const body=[];
+    for(let i=1;i<=20;i++){ body.push(["","","","","",""]); }
+
+    doc.setFontSize(14);
+    doc.text("Suivi des Équipements", 40, 15);
+
+    doc.autoTable({
+        startY:25,
+        head:[["Équipement","Catégorie","Date Achat","Valeur Initiale","Valeur Actuelle","Amortissement"]],
+        body:body,
+        theme:"grid",
+        headStyles:{ fillColor:[68,114,196], textColor:255, halign:"center" },
+        bodyStyles:{ halign:"center" },
+        alternateRowStyles:{ fillColor:[240,240,240] }
+    });
+
+    doc.save("Equipements.pdf");
+});
+</script>
+
+
+<script>
+document.getElementById("exportExcelContrats").addEventListener("click", async function() {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet("Contrats Fournisseurs");
+
+    sheet.addRow(["Fournisseur","Contrat","Date Début","Date Fin","Montant Contrat","Montant Dépensé","Écart"]);
+    const header = sheet.getRow(1);
+    header.font = { bold:true, color:{ argb:'FFFFFFFF'} };
+    header.fill = { type:'pattern', pattern:'solid', fgColor:{ argb:'4472C4'} };
+    header.alignment = { horizontal:'center' };
+
+    sheet.columns = [
+        { width:25 }, { width:20 }, { width:18 }, { width:18 }, { width:18 }, { width:18 }, { width:18 }
+    ];
+
+    for(let i=2;i<=1000;i++){
+        sheet.addRow([null,null,null,null,null,null,null]);
+        sheet.getCell(`G${i}`).value = { formula:`E${i}-F${i}` }; // Écart
+        sheet.getCell(`E${i}`).numFmt = '#,##0.00';
+        sheet.getCell(`F${i}`).numFmt = '#,##0.00';
+        sheet.getCell(`G${i}`).numFmt = '#,##0.00';
+    }
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    saveAs(new Blob([buffer]), "ContratsFournisseurs.xlsx");
+});
+
+document.getElementById("exportPDFContrats").addEventListener("click", function() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    const body=[];
+    for(let i=1;i<=20;i++){ body.push(["","","","","","",""]); }
+
+    doc.setFontSize(14);
+    doc.text("Suivi des Contrats Fournisseurs", 40, 15);
+
+    doc.autoTable({
+        startY:25,
+        head:[["Fournisseur","Contrat","Date Début","Date Fin","Montant Contrat","Montant Dépensé","Écart"]],
+        body:body,
+        theme:"grid",
+        headStyles:{ fillColor:[68,114,196], textColor:255, halign:"center" },
+        bodyStyles:{ halign:"center" },
+        alternateRowStyles:{ fillColor:[240,240,240] }
+    });
+
+    doc.save("ContratsFournisseurs.pdf");
+});
+</script>
+
+
+
+
+<script>
+document.getElementById("exportExcelVoitures").addEventListener("click", async function() {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet("Gestion Voitures");
+
+    sheet.addRow(["Numéro","Marque","Modèle","Année","Kilométrage","Consommation (L/100km)","Coût Carburant","Valeur Estimée"]);
+    const header = sheet.getRow(1);
+    header.font = { bold:true, color:{ argb:'FFFFFFFF'} };
+    header.fill = { type:'pattern', pattern:'solid', fgColor:{ argb:'4472C4'} };
+    header.alignment = { horizontal:'center' };
+
+    sheet.columns = [
+        { width:10 }, { width:18 }, { width:18 }, { width:12 }, { width:15 }, { width:18 }, { width:15 }, { width:18 }
+    ];
+
+    for(let i=2;i<=1000;i++){
+        sheet.addRow([null,null,null,null,null,null,null,null]);
+        sheet.getCell(`G${i}`).value = { formula:`E${i}*F${i}` }; // Coût Carburant estimé
+        sheet.getCell(`H${i}`).value = { formula:`G${i}*1.1` }; // Valeur estimée avec marge
+        ["E","F","G","H"].forEach(col => sheet.getCell(`${col}${i}`).numFmt = '#,##0.00');
+    }
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    saveAs(new Blob([buffer]), "GestionVoitures.xlsx");
+});
+
+document.getElementById("exportPDFVoitures").addEventListener("click", function() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    const body=[];
+    for(let i=1;i<=20;i++){ body.push(["","","","","","","",""]); }
+
+    doc.setFontSize(14);
+    doc.text("Gestion des Voitures", 40, 15);
+
+    doc.autoTable({
+        startY:25,
+        head:[["Numéro","Marque","Modèle","Année","Kilométrage","Consommation (L/100km)","Coût Carburant","Valeur Estimée"]],
+        body:body,
+        theme:"grid",
+        headStyles:{ fillColor:[68,114,196], textColor:255, halign:"center" },
+        bodyStyles:{ halign:"center" },
+        alternateRowStyles:{ fillColor:[240,240,240] }
+    });
+
+    doc.save("GestionVoitures.pdf");
+});
+</script>
+
+
+
+
+
+</body>
+</html>

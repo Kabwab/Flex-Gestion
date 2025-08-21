@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Projet.css">
+    <link rel="stylesheet" href="fontawesome-free-6.5.1-web/fontawesome-free-6.5.1-web/css/all.min.css">
+      <link rel="icon" href="AB12.png" type="image/png">
+</head>
+<body>
+      
+<!-- MENU HAMBURGER -->
+<div id="menu-hamburger" class="menu-hamburger">
+  &#9776;
+</div>
+
+
+<nav class="sidebar" id="sidebar">
+  <img src="AB12.png" alt="Logo">
+
+  <a href="actu.html" class="canvas"><i class="fas fa-home"></i> Vue d'ensemble</a>
+
+  <div class="grid-menu">
+    <a href="premuin.html" class="menu-item">
+      <i class="fas fa-calculator"></i>
+      <span>Modèles </span>
+    </a>
+
+    <a href="avis.html" class="menu-item">
+      <i class="fas fa-comment-dots"></i>
+      <span>Votre avis</span>
+    </a>
+
+    <a href="propos.html" class="menu-item">
+      <i class="fas fa-info-circle"></i>
+      <span>A Propos</span>
+    </a>
+  </div>
+</nav>
+
+
+
+<style>
+  /* --- Hamburger --- */
+.menu-hamburger {
+  display: none; /* caché par défaut sur grand écran */
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 1001; /* au-dessus du menu */
+  color: #003366; /* couleur du hamburger */
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .menu-hamburger {
+    display: block; /* visible aux petits écrans */
+  }
+
+  .sidebar {
+    transform: translateX(-100%); /* menu caché par défaut */
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar.active {
+    transform: translateX(0); /* menu visible quand actif */
+  }
+}
+
+@media (max-width: 600px) {
+  .menu-hamburger {
+    left: 10px;
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 400px) {
+  .menu-hamburger {
+    left: 8px;
+    font-size: 25px;
+  }
+}
+
+</style>
+
+<script>
+  const menu = document.getElementById("menu-hamburger");
+const sidebar = document.getElementById("sidebar");
+
+menu.addEventListener('click', () => {
+  sidebar.classList.toggle("active");
+});
+
+</script>
+
+  <section class="tent">
+    <div class="table-block">
+  <h2>Suivi des Projets</h2>
+  <div class="buttons">
+    <button class="btn" id="exportExcelProjet1">Télécharger Excel</button>
+    <button class="btn" id="exportPDFProjet1">Télécharger PDF</button>
+  </div>
+  <table id="projetTable1">
+    <thead>
+      <tr>
+        <th>Projet</th>
+        <th>Responsable</th>
+        <th>Date Début</th>
+        <th>Date Fin</th>
+        <th>Statut</th>
+        <th>Avancement (%)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="table-block">
+  <h2>Budget et Ressources du Projet</h2>
+  <div class="buttons">
+    <button class="btn" id="exportExcelProjet2">Télécharger Excel</button>
+    <button class="btn" id="exportPDFProjet2">Télécharger PDF</button>
+  </div>
+  <table id="projetTable2">
+    <thead>
+      <tr>
+        <th>Projet</th>
+        <th>Budget Alloué</th>
+        <th>Dépenses Réelles</th>
+        <th>Écart</th>
+        <th>Ressources Humaines</th>
+        <th>Ressources Matérielles</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<div class="table-block">
+  <h2>Suivi des Tâches du Projet</h2>
+  <div class="buttons">
+    <button class="btn" id="exportExcelProjet3">Télécharger Excel</button>
+    <button class="btn" id="exportPDFProjet3">Télécharger PDF</button>
+  </div>
+  <table id="projetTable3">
+    <thead>
+      <tr>
+        <th>Tâche</th>
+        <th>Responsable</th>
+        <th>Date Début</th>
+        <th>Date Fin</th>
+        <th>Statut</th>
+        <th>Avancement (%)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="table-block">
+  <h2>Priorités et Ressources des Projets</h2>
+  <div class="buttons">
+    <button class="btn" id="exportExcelProjet4">Télécharger Excel</button>
+    <button class="btn" id="exportPDFProjet4">Télécharger PDF</button>
+  </div>
+  <table id="projetTable4">
+    <thead>
+      <tr>
+        <th>Projet</th>
+        <th>Priorité</th>
+        <th>Budget Alloué</th>
+        <th>Dépenses Réelles</th>
+        <th>Écart</th>
+        <th>Ressources Humaines</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="table-block">
+  <h2>Suivi des Délais des Projets</h2>
+  <div class="buttons">
+    <button class="btn" id="exportExcelProjet5">Télécharger Excel</button>
+    <button class="btn" id="exportPDFProjet5">Télécharger PDF</button>
+  </div>
+  <table id="projetTable5">
+    <thead>
+      <tr>
+        <th>Projet</th>
+        <th>Tâche</th>
+        <th>Date Début</th>
+        <th>Date Fin Prévue</th>
+        <th>Date Fin Réelle</th>
+        <th>Retard (jours)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="table-block">
+  <h2>Indicateurs de Performance du Projet</h2>
+  <div class="buttons">
+    <button class="btn" id="exportExcelProjet6">Télécharger Excel</button>
+    <button class="btn" id="exportPDFProjet6">Télécharger PDF</button>
+  </div>
+  <table id="projetTable6">
+    <thead>
+      <tr>
+        <th>Projet</th>
+        <th>Budget Alloué</th>
+        <th>Dépenses Réelles</th>
+        <th>Écart Budget</th>
+        <th>Avancement (%)</th>
+        <th>Performance Globale</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+  </section>
+
+
+ <style>
+
+.table-block {
+  margin-bottom: 30px;
+  overflow-x: auto; /* permet le scroll horizontal si écran petit */
+}
+
+    @media (max-width: 768px) {
+  .tent {
+    margin-left: 0; /* contenu prend toute la largeur */
+    padding: 15px;
+  }
+
+  .sidebar.active ~ .tent {
+    margin-left: 250px; /* si le menu est ouvert, décaler le contenu */
+  }
+
+  .table-block table {
+    font-size: 14px; /* réduire la taille du texte sur mobile */
+  }
+}
+
+@media (max-width: 600px) {
+  .tent {
+    padding: 10px;
+  }
+
+  .table-block table {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 400px) {
+  .table-block table {
+    font-size: 12px;
+  }
+}
+   </style>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+
+<script>
+document.getElementById("exportExcelProjet1").addEventListener("click", async function() {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet("Suivi des Projets");
+
+    sheet.addRow(["Projet","Responsable","Date Début","Date Fin","Statut","Avancement (%)"]);
+    const header = sheet.getRow(1);
+    header.font = { bold:true, color:{ argb:'FFFFFFFF'} };
+    header.fill = { type:'pattern', pattern:'solid', fgColor:{ argb:'4472C4'} };
+    header.alignment = { horizontal:'center' };
+
+    sheet.columns = [
+        { width:20 }, { width:18 }, { width:18 }, { width:18 }, { width:15 }, { width:15 }
+    ];
+
+    for(let i=2;i<=1000;i++){
+        sheet.addRow([null,null,null,null,null,null]);
+        sheet.getCell(`F${i}`).value = { formula:`0` }; // Avancement initial = 0%
+    }
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    saveAs(new Blob([buffer]), "SuiviProjets.xlsx");
+});
+
+document.getElementById("exportPDFProjet1").addEventListener("click", function() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const body=[];
+    for(let i=1;i<=20;i++){ body.push(["","","","","",""]); }
+
+    doc.setFontSize(14);
+    doc.text("Suivi des Projets", 40, 15);
+
+    doc.autoTable({
+        startY:25,
+        head:[["Projet","Responsable","Date Début","Date Fin","Statut","Avancement (%)"]],
+        body:body,
+        theme:"grid",
+        headStyles:{ fillColor:[68,114,196], textColor:255, halign:"center" },
+        bodyStyles:{ halign:"center" },
+        alternateRowStyles:{ fillColor:[240,240,240] }
+    });
+
+    doc.save("SuiviProjets.pdf");
+});
+</script>
+<script>
+document.getElementById("exportExcelProjet2").addEventListener("click", async function() {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet("Budget & Ressources");
+
+    sheet.addRow(["Projet","Budget Alloué","Dépenses Réelles","Écart","Ressources Humaines","Ressources Matérielles"]);
+    const header = sheet.getRow(1);
+    header.font = { bold:true, color:{ argb:'FFFFFFFF'} };
+    header.fill = { type:'pattern', pattern:'solid', fgColor:{ argb:'4472C4'} };
+    header.alignment = { horizontal:'center' };
+
+    sheet.columns = [
+        { width:20 }, { width:18 }, { width:18 }, { width:18 }, { width:18 }, { width:18 }
+    ];
+
+    for(let i=2;i<=1000;i++){
+        sheet.addRow([null,null,null,null,null,null]);
+        sheet.getCell(`D${i}`).value = { formula:`B${i}-C${i}` }; // Écart = Budget - Dépenses
+        sheet.getCell(`B${i}`).numFmt = '#,##0.00';
+        sheet.getCell(`C${i}`).numFmt = '#,##0.00';
+        sheet.getCell(`D${i}`).numFmt = '#,##0.00';
+    }
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    saveAs(new Blob([buffer]), "BudgetRessourcesProjets.xlsx");
+});
+
+document.getElementById("exportPDFProjet2").addEventListener("click", function() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const body=[];
+    for(let i=1;i<=20;i++){ body.push(["","","","","",""]); }
+
+    doc.setFontSize(14);
+    doc.text("Budget et Ressources du Projet", 40, 15);
+
+    doc.autoTable({
+        startY:25,
+        head:[["Projet","Budget Alloué","Dépenses Réelles","Écart","Ressources Humaines","Ressources Matérielles"]],
+        body:body,
+        theme:"grid",
+        headStyles:{ fillColor:[68,114,196], textColor:255, halign:"center" },
+        bodyStyles:{ halign:"center" },
+        alternateRowStyles:{ fillColor:[240,240,240] }
+    });
+
+    doc.save("BudgetRessourcesProjets.pdf");
+});
+</script>
+
+
+<script>
+document.getElementById("exportExcelProjet3").addEventListener("click", async function() {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet("Suivi des Tâches");
+
+    sheet.addRow(["Tâche","Responsable","Date Début","Date Fin","Statut","Avancement (%)"]);
+    const header = sheet.getRow(1);
+    header.font = { bold:true, color:{ argb:'FFFFFFFF'} };
+    header.fill = { type:'pattern', pattern:'solid', fgColor:{ argb:'4472C4'} };
+    header.alignment = { horizontal:'center' };
+
+    sheet.columns = [
+        { width:20 }, { width:18 }, { width:18 }, { width:18 }, { width:15 }, { width:15 }
+    ];
+
+    for(let i=2;i<=1000;i++){
+        sheet.addRow([null,null,null,null,null,null]);
+        sheet.getCell(`F${i}`).value = { formula:`0` }; // Avancement initial = 0%
+    }
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    saveAs(new Blob([buffer]), "SuiviTaches.xlsx");
+});
+
+document.getElementById("exportPDFProjet3").addEventListener("click", function() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const body=[];
+    for(let i=1;i<=20;i++){ body.push(["","","","","",""]); }
+
+    doc.setFontSize(14);
+    doc.text("Suivi des Tâches du Projet", 40, 15);
+
+    doc.autoTable({
+        startY:25,
+        head:[["Tâche","Responsable","Date Début","Date Fin","Statut","Avancement (%)"]],
+        body:body,
+        theme:"grid",
+        headStyles:{ fillColor:[68,114,196], textColor:255, halign:"center" },
+        bodyStyles:{ halign:"center" },
+        alternateRowStyles:{ fillColor:[240,240,240] }
+    });
+
+    doc.save("SuiviTaches.pdf");
+});
+</script>
+
+
+<script>
+document.getElementById("exportExcelProjet4").addEventListener("click", async function() {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet("Priorités & Ressources");
+
+    sheet.addRow(["Projet","Priorité","Budget Alloué","Dépenses Réelles","Écart","Ressources Humaines"]);
+    const header = sheet.getRow(1);
+    header.font = { bold:true, color:{ argb:'FFFFFFFF'} };
+    header.fill = { type:'pattern', pattern:'solid', fgColor:{ argb:'4472C4'} };
+    header.alignment = { horizontal:'center' };
+
+    sheet.columns = [
+        { width:20 }, { width:12 }, { width:18 }, { width:18 }, { width:18 }, { width:18 }
+    ];
+
+    for(let i=2;i<=1000;i++){
+        sheet.addRow([null,null,null,null,null,null]);
+        sheet.getCell(`E${i}`).value = { formula:`C${i}-D${i}` }; // Écart = Budget - Dépenses
+        sheet.getCell(`C${i}`).numFmt = '#,##0.00';
+        sheet.getCell(`D${i}`).numFmt = '#,##0.00';
+        sheet.getCell(`E${i}`).numFmt = '#,##0.00';
+    }
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    saveAs(new Blob([buffer]), "PrioritesRessources.xlsx");
+});
+
+document.getElementById("exportPDFProjet4").addEventListener("click", function() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const body=[];
+    for(let i=1;i<=20;i++){ body.push(["","","","","",""]); }
+
+    doc.setFontSize(14);
+    doc.text("Priorités et Ressources des Projets", 40, 15);
+
+    doc.autoTable({
+        startY:25,
+        head:[["Projet","Priorité","Budget Alloué","Dépenses Réelles","Écart","Ressources Humaines"]],
+        body:body,
+        theme:"grid",
+        headStyles:{ fillColor:[68,114,196], textColor:255, halign:"center" },
+        bodyStyles:{ halign:"center" },
+        alternateRowStyles:{ fillColor:[240,240,240] }
+    });
+
+    doc.save("PrioritesRessources.pdf");
+});
+</script>
+
+
+<script>
+document.getElementById("exportExcelProjet5").addEventListener("click", async function() {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet("Suivi Délais");
+
+    sheet.addRow(["Projet","Tâche","Date Début","Date Fin Prévue","Date Fin Réelle","Retard (jours)"]);
+    const header = sheet.getRow(1);
+    header.font = { bold:true, color:{ argb:'FFFFFFFF'} };
+    header.fill = { type:'pattern', pattern:'solid', fgColor:{ argb:'4472C4'} };
+    header.alignment = { horizontal:'center' };
+
+    sheet.columns = [
+        { width:20 }, { width:20 }, { width:18 }, { width:18 }, { width:18 }, { width:15 }
+    ];
+
+    for(let i=2;i<=1000;i++){
+        sheet.addRow([null,null,null,null,null,null]);
+        sheet.getCell(`F${i}`).value = { formula:`IF(E${i}>D${i},E${i}-D${i},0)` }; // Retard en jours
+    }
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    saveAs(new Blob([buffer]), "SuiviDelais.xlsx");
+});
+
+document.getElementById("exportPDFProjet5").addEventListener("click", function() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const body=[];
+    for(let i=1;i<=20;i++){ body.push(["","","","","",""]); }
+
+    doc.setFontSize(14);
+    doc.text("Suivi des Délais des Projets", 40, 15);
+
+    doc.autoTable({
+        startY:25,
+        head:[["Projet","Tâche","Date Début","Date Fin Prévue","Date Fin Réelle","Retard (jours)"]],
+        body:body,
+        theme:"grid",
+        headStyles:{ fillColor:[68,114,196], textColor:255, halign:"center" },
+        bodyStyles:{ halign:"center" },
+        alternateRowStyles:{ fillColor:[240,240,240] }
+    });
+
+    doc.save("SuiviDelais.pdf");
+});
+</script>
+
+
+<script>
+document.getElementById("exportExcelProjet6").addEventListener("click", async function() {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet("Indicateurs Performance");
+
+    sheet.addRow(["Projet","Budget Alloué","Dépenses Réelles","Écart Budget","Avancement (%)","Performance Globale"]);
+    const header = sheet.getRow(1);
+    header.font = { bold:true, color:{ argb:'FFFFFFFF'} };
+    header.fill = { type:'pattern', pattern:'solid', fgColor:{ argb:'4472C4'} };
+    header.alignment = { horizontal:'center' };
+
+    sheet.columns = [
+        { width:20 }, { width:18 }, { width:18 }, { width:18 }, { width:15 }, { width:20 }
+    ];
+
+    for(let i=2;i<=1000;i++){
+        sheet.addRow([null,null,null,null,null,null]);
+        sheet.getCell(`D${i}`).value = { formula:`C${i}-B${i}` }; // Écart Budget
+        sheet.getCell(`F${i}`).value = { formula:`E${i}-(C${i}-B${i})/B${i}*100` }; // Performance Globale
+        sheet.getCell(`B${i}`).numFmt = '#,##0.00';
+        sheet.getCell(`C${i}`).numFmt = '#,##0.00';
+        sheet.getCell(`D${i}`).numFmt = '#,##0.00';
+        sheet.getCell(`F${i}`).numFmt = '#,##0.00';
+    }
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    saveAs(new Blob([buffer]), "IndicateursPerformance.xlsx");
+});
+
+document.getElementById("exportPDFProjet6").addEventListener("click", function() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const body=[];
+    for(let i=1;i<=20;i++){ body.push(["","","","","",""]); }
+
+    doc.setFontSize(14);
+    doc.text("Indicateurs de Performance du Projet", 40, 15);
+
+    doc.autoTable({
+        startY:25,
+        head:[["Projet","Budget Alloué","Dépenses Réelles","Écart Budget","Avancement (%)","Performance Globale"]],
+        body:body,
+        theme:"grid",
+        headStyles:{ fillColor:[68,114,196], textColor:255, halign:"center" },
+        bodyStyles:{ halign:"center" },
+        alternateRowStyles:{ fillColor:[240,240,240] }
+    });
+
+    doc.save("IndicateursPerformance.pdf");
+});
+</script>
+
+
+</body>
+</html>

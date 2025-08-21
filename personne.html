@@ -1,0 +1,436 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Personne.css">
+    <link rel="stylesheet" href="fontawesome-free-6.5.1-web/fontawesome-free-6.5.1-web/css/all.min.css">
+      <link rel="icon" href="AB12.png" type="image/png">
+</head>
+<body>
+    
+<!-- MENU HAMBURGER -->
+<div id="menu-hamburger" class="menu-hamburger">
+  &#9776;
+</div>
+
+<nav class="sidebar" id="sidebar">
+  <img src="AB12.png" alt="Logo">
+
+  <a href="actu.html" class="canvas"><i class="fas fa-home"></i> Vue d'ensemble</a>
+
+  <div class="grid-menu">
+    <a href="premuin.html" class="menu-item">
+      <i class="fas fa-calculator"></i>
+      <span>Modèles </span>
+    </a>
+
+    <a href="avis.html" class="menu-item">
+      <i class="fas fa-comment-dots"></i>
+      <span>Votre avis</span>
+    </a>
+
+    <a href="propos.html" class="menu-item">
+      <i class="fas fa-info-circle"></i>
+      <span>A Propos</span>
+    </a>
+  </div>
+</nav>
+
+
+
+<style>
+  /* --- Hamburger --- */
+.menu-hamburger {
+  display: none; /* caché par défaut sur grand écran */
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 1001; /* au-dessus du menu */
+  color: #003366; /* couleur du hamburger */
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .menu-hamburger {
+    display: block; /* visible aux petits écrans */
+  }
+
+  .sidebar {
+    transform: translateX(-100%); /* menu caché par défaut */
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar.active {
+    transform: translateX(0); /* menu visible quand actif */
+  }
+}
+
+@media (max-width: 600px) {
+  .menu-hamburger {
+    left: 10px;
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 400px) {
+  .menu-hamburger {
+    left: 8px;
+    font-size: 25px;
+  }
+}
+
+</style>
+
+<script>
+  const menu = document.getElementById("menu-hamburger");
+const sidebar = document.getElementById("sidebar");
+
+menu.addEventListener('click', () => {
+  sidebar.classList.toggle("active");
+});
+
+</script>
+
+  <section class="tent">
+    <div class="table-block">
+  <h2>Informations Générales des Personnes</h2>
+  <div class="buttons">
+    <button class="btn" id="exportExcelPerson1">Télécharger Excel</button>
+    <button class="btn" id="exportPDFPerson1">Télécharger PDF</button>
+  </div>
+  <table id="personTable1">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Date de Naissance</th>
+        <th>Email</th>
+        <th>Téléphone</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td><td></td><td></td><td></td><td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="table-block">
+  <h2>Informations Professionnelles des Personnes</h2>
+  <div class="buttons">
+    <button class="btn" id="exportExcelPerson2">Télécharger Excel</button>
+    <button class="btn" id="exportPDFPerson2">Télécharger PDF</button>
+  </div>
+  <table id="personTable2">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Poste</th>
+        <th>Département</th>
+        <th>Salaire</th>
+        <th>Date d’Entrée</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td><td></td><td></td><td></td><td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="table-block">
+  <h2>Coordonnées et Adresse des Personnes</h2>
+  <div class="buttons">
+    <button class="btn" id="exportExcelPerson3">Télécharger Excel</button>
+    <button class="btn" id="exportPDFPerson3">Télécharger PDF</button>
+  </div>
+  <table id="personTable3">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Adresse</th>
+        <th>Email</th>
+        <th>Téléphone</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td><td></td><td></td><td></td><td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="table-block">
+  <h2>Informations Bancaires des Personnes</h2>
+  <div class="buttons">
+    <button class="btn" id="exportExcelPerson4">Télécharger Excel</button>
+    <button class="btn" id="exportPDFPerson4">Télécharger PDF</button>
+  </div>
+  <table id="personTable4">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Banque</th>
+        <th>Numéro de Compte</th>
+        <th>Type de Compte</th>
+        <th>Solde</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td><td></td><td></td><td></td><td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  </section>
+
+
+   <style>
+
+.table-block {
+  margin-bottom: 30px;
+  overflow-x: auto; /* permet le scroll horizontal si écran petit */
+}
+
+    @media (max-width: 768px) {
+  .tent {
+    margin-left: 0; /* contenu prend toute la largeur */
+    padding: 15px;
+  }
+
+  .sidebar.active ~ .tent {
+    margin-left: 250px; /* si le menu est ouvert, décaler le contenu */
+  }
+
+  .table-block table {
+    font-size: 14px; /* réduire la taille du texte sur mobile */
+  }
+}
+
+@media (max-width: 600px) {
+  .tent {
+    padding: 10px;
+  }
+
+  .table-block table {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 400px) {
+  .table-block table {
+    font-size: 12px;
+  }
+}
+   </style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+
+<script>
+document.getElementById("exportExcelPerson1").addEventListener("click", async function() {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet("Données Personnelles 1");
+
+    sheet.addRow(["Nom","Prénom","Date de Naissance","Email","Téléphone"]);
+    const header = sheet.getRow(1);
+    header.font = { bold:true, color:{ argb:'FFFFFFFF'} };
+    header.fill = { type:'pattern', pattern:'solid', fgColor:{ argb:'4472C4'} };
+    header.alignment = { horizontal:'center' };
+
+    sheet.columns = [
+        { width:18 }, { width:18 }, { width:20 }, { width:28 }, { width:18 }
+    ];
+
+    // Générer 1000 lignes vides
+    for(let i=2;i<=1000;i++){
+        sheet.addRow([null,null,null,null,null]);
+    }
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    saveAs(new Blob([buffer]), "DonneesPersonnelles1.xlsx");
+});
+
+document.getElementById("exportPDFPerson1").addEventListener("click", function() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const body=[];
+    for(let i=1;i<=20;i++){ body.push(["","","","",""]); }
+
+    doc.setFontSize(14);
+    doc.text("Informations Générales des Personnes", 40, 15);
+
+    doc.autoTable({
+        startY:25,
+        head:[["Nom","Prénom","Date de Naissance","Email","Téléphone"]],
+        body:body,
+        theme:"grid",
+        headStyles:{ fillColor:[68,114,196], textColor:255, halign:"center" },
+        bodyStyles:{ halign:"center" },
+        alternateRowStyles:{ fillColor:[240,240,240] }
+    });
+
+    doc.save("DonneesPersonnelles1.pdf");
+});
+</script>
+<script>
+document.getElementById("exportExcelPerson2").addEventListener("click", async function() {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet("Données Personnelles 2");
+
+    sheet.addRow(["Nom","Poste","Département","Salaire","Date d’Entrée"]);
+    const header = sheet.getRow(1);
+    header.font = { bold:true, color:{ argb:'FFFFFFFF'} };
+    header.fill = { type:'pattern', pattern:'solid', fgColor:{ argb:'4472C4'} };
+    header.alignment = { horizontal:'center' };
+
+    sheet.columns = [
+        { width:18 }, { width:20 }, { width:20 }, { width:18 }, { width:18 }
+    ];
+
+    // Générer 1000 lignes vides
+    for(let i=2;i<=1000;i++){
+        sheet.addRow([null,null,null,null,null]);
+        sheet.getCell(`D${i}`).numFmt = '#,##0.00'; // Format monétaire pour salaire
+    }
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    saveAs(new Blob([buffer]), "DonneesPersonnelles2.xlsx");
+});
+
+document.getElementById("exportPDFPerson2").addEventListener("click", function() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const body=[];
+    for(let i=1;i<=20;i++){ body.push(["","","","",""]); }
+
+    doc.setFontSize(14);
+    doc.text("Informations Professionnelles des Personnes", 40, 15);
+
+    doc.autoTable({
+        startY:25,
+        head:[["Nom","Poste","Département","Salaire","Date d’Entrée"]],
+        body:body,
+        theme:"grid",
+        headStyles:{ fillColor:[68,114,196], textColor:255, halign:"center" },
+        bodyStyles:{ halign:"center" },
+        alternateRowStyles:{ fillColor:[240,240,240] }
+    });
+
+    doc.save("DonneesPersonnelles2.pdf");
+});
+</script>
+
+
+
+
+<script>
+document.getElementById("exportExcelPerson3").addEventListener("click", async function() {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet("Coordonnées Personnes");
+
+    sheet.addRow(["Nom","Prénom","Adresse","Email","Téléphone"]);
+    const header = sheet.getRow(1);
+    header.font = { bold:true, color:{ argb:'FFFFFFFF'} };
+    header.fill = { type:'pattern', pattern:'solid', fgColor:{ argb:'4472C4'} };
+    header.alignment = { horizontal:'center' };
+
+    sheet.columns = [
+        { width:18 }, { width:18 }, { width:28 }, { width:28 }, { width:18 }
+    ];
+
+    for(let i=2;i<=1000;i++){
+        sheet.addRow([null,null,null,null,null]);
+    }
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    saveAs(new Blob([buffer]), "CoordonneesPersonnes.xlsx");
+});
+
+document.getElementById("exportPDFPerson3").addEventListener("click", function() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const body=[];
+    for(let i=1;i<=20;i++){ body.push(["","","","",""]); }
+
+    doc.setFontSize(14);
+    doc.text("Coordonnées et Adresse des Personnes", 40, 15);
+
+    doc.autoTable({
+        startY:25,
+        head:[["Nom","Prénom","Adresse","Email","Téléphone"]],
+        body:body,
+        theme:"grid",
+        headStyles:{ fillColor:[68,114,196], textColor:255, halign:"center" },
+        bodyStyles:{ halign:"center" },
+        alternateRowStyles:{ fillColor:[240,240,240] }
+    });
+
+    doc.save("CoordonneesPersonnes.pdf");
+});
+</script>
+<script>
+document.getElementById("exportExcelPerson4").addEventListener("click", async function() {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet("Banque Personnes");
+
+    sheet.addRow(["Nom","Banque","Numéro de Compte","Type de Compte","Solde"]);
+    const header = sheet.getRow(1);
+    header.font = { bold:true, color:{ argb:'FFFFFFFF'} };
+    header.fill = { type:'pattern', pattern:'solid', fgColor:{ argb:'4472C4'} };
+    header.alignment = { horizontal:'center' };
+
+    sheet.columns = [
+        { width:18 }, { width:20 }, { width:22 }, { width:18 }, { width:18 }
+    ];
+
+    for(let i=2;i<=1000;i++){
+        sheet.addRow([null,null,null,null,null]);
+        sheet.getCell(`E${i}`).numFmt = '#,##0.00'; // Format monétaire
+    }
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    saveAs(new Blob([buffer]), "BanquePersonnes.xlsx");
+});
+
+document.getElementById("exportPDFPerson4").addEventListener("click", function() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const body=[];
+    for(let i=1;i<=20;i++){ body.push(["","","","",""]); }
+
+    doc.setFontSize(14);
+    doc.text("Informations Bancaires des Personnes", 40, 15);
+
+    doc.autoTable({
+        startY:25,
+        head:[["Nom","Banque","Numéro de Compte","Type de Compte","Solde"]],
+        body:body,
+        theme:"grid",
+        headStyles:{ fillColor:[68,114,196], textColor:255, halign:"center" },
+        bodyStyles:{ halign:"center" },
+        alternateRowStyles:{ fillColor:[240,240,240] }
+    });
+
+    doc.save("BanquePersonnes.pdf");
+});
+</script>
+
+
+
+</body>
+</html>

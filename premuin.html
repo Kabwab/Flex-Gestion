@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="Premuin.css">
+  <link rel="stylesheet" href="fontawesome-free-6.5.1-web/fontawesome-free-6.5.1-web/css/all.min.css">
+  <link rel="icon" href="AB12.png" type="image/png">
+</head>
+<body>
+
+<!-- MENU HAMBURGER -->
+<div id="menu-hamburger" class="menu-hamburger">
+  &#9776;
+</div>
+
+<nav class="sidebar" id="sidebar">
+  <img src="AB12.png" alt="Logo">
+
+  <a href="actu.html" class="canvas"><i class="fas fa-home"></i> Vue d'ensemble</a>
+
+  <div class="grid-menu">
+    <a href="premuin.html" class="menu-item">
+      <i class="fas fa-calculator"></i>
+      <span>Modèles Gratuit</span>
+    </a>
+
+    <a href="avis.html" class="menu-item">
+      <i class="fas fa-comment-dots"></i>
+      <span>Votre avis</span>
+    </a>
+
+    <a href="propos.html" class="menu-item">
+      <i class="fas fa-info-circle"></i>
+      <span>A Propos</span>
+    </a>
+  </div>
+</nav>
+
+
+
+<style>
+  /* --- Hamburger --- */
+.menu-hamburger {
+  display: none; /* caché par défaut sur grand écran */
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 1001; /* au-dessus du menu */
+  color: #003366; /* couleur du hamburger */
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .menu-hamburger {
+    display: block; /* visible aux petits écrans */
+  }
+
+  .sidebar {
+    transform: translateX(-100%); /* menu caché par défaut */
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar.active {
+    transform: translateX(0); /* menu visible quand actif */
+  }
+}
+
+@media (max-width: 600px) {
+  .menu-hamburger {
+    left: 10px;
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 400px) {
+  .menu-hamburger {
+    left: 8px;
+    font-size: 25px;
+  }
+}
+
+</style>
+
+<script>
+  const menu = document.getElementById("menu-hamburger");
+const sidebar = document.getElementById("sidebar");
+
+menu.addEventListener('click', () => {
+  sidebar.classList.toggle("active");
+});
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- CONTENU CENTRAL -->
+  <section class="centre">
+    <div class="main-content">
+      <h2>Flex Gestion</h2>
+      <section class="flex-commentaire">
+  <p>
+     Avec <strong>Flex Gestion</strong>, transformez vos données en un clin d’œil !<br>
+    Téléchargez gratuitement nos tableurs intelligents (Excel ou PDF) déjà remplis des formules prêtes à l’emploi.<br>
+    Gérez vos données des finances, stocks, budgets ou autres facilement depuis votre ordinateur, tablette ou smartphone .
+  </p>
+</section>
+      <div class="grid-menu">
+
+        <a href="stock.html" class="menu-item"><i class="fas fa-boxes"></i> Gestion des Données Stock</a>
+        <a href="budget.html" class="menu-item"><i class="fas fa-wallet"></i> Gestion Budgétaire</a>
+        <a href="perfomance.html" class="menu-item"><i class="fas fa-users"></i> Performances des Travailleurs</a>
+        <a href="univer.html" class="menu-item"><i class="fas fa-university"></i> Données Universitaires</a>
+        <a href="paiement.html" class="menu-item"><i class="fas fa-credit-card"></i> Données de Paiement</a>
+        <a href="energie.html" class="menu-item"><i class="fas fa-bolt"></i> Energies Électriques</a>
+        <a href="financier.html" class="menu-item"><i class="fas fa-chart-pie"></i> Données Financières</a>
+        <a href="personne.html" class="menu-item"><i class="fas fa-id-card"></i> Données Personnelles</a>
+        <a href="projet.html" class="menu-item"><i class="fas fa-tasks"></i> Données Projets</a>
+        <a href="sup.html" class="menu-item"><i class="fas fa-calendar-alt"></i> Autres Données</a>
+
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* Contenu principal par défaut */
+.centre {
+  margin-left: 250px; /* espace réservé pour le menu latéral */
+  
+}
+
+
+@media (max-width: 1024px) {
+  .centre .grid-menu .menu-item {
+    flex: 1 1 calc(50% - 10px); /* 2 colonnes sur tablettes */
+  }
+}
+
+@media (max-width: 768px) {
+  .centre {
+    margin-left: 0; /* prend toute la largeur sur petits écrans */
+    padding: 15px;
+  }
+
+  .sidebar.active ~ .centre {
+    margin-left: 250px; /* décale le contenu si menu ouvert */
+  }
+
+  .centre .grid-menu .menu-item {
+    flex: 1 1 100%; /* 1 colonne sur mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .centre {
+    padding: 10px;
+  }
+
+  .flex-commentaire p {
+    font-size: 14px; /* texte lisible sur mobile */
+  }
+
+  .centre .grid-menu .menu-item {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 400px) {
+  .flex-commentaire p {
+    font-size: 13px;
+  }
+
+  .centre .grid-menu .menu-item {
+    font-size: 13px;
+    padding: 6px;
+  }
+}
+
+  </style>
+
+</body>
+</html>

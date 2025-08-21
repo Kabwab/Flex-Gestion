@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Propos.css">
+     <link rel="stylesheet" href="fontawesome-free-6.5.1-web/fontawesome-free-6.5.1-web/css/all.min.css">
+       <link rel="icon" href="AB12.png" type="image/png">
+</head>
+<body>
+
+
+    
+<!-- MENU HAMBURGER -->
+<div id="menu-hamburger" class="menu-hamburger">
+  &#9776;
+</div>
+
+<nav class="sidebar" id="sidebar">
+  <img src="AB12.png" alt="Logo">
+
+  <a href="actu.html" class="canvas"><i class="fas fa-home"></i> Vue d'ensemble</a>
+
+  <div class="grid-menu">
+    <a href="premuin.html" class="menu-item">
+      <i class="fas fa-calculator"></i>
+      <span>Modèles</span>
+    </a>
+
+    <a href="avis.html" class="menu-item">
+      <i class="fas fa-comment-dots"></i>
+      <span>Votre avis</span>
+    </a>
+
+    <a href="propos.html" class="menu-item">
+      <i class="fas fa-info-circle"></i>
+      <span>A Propos</span>
+    </a>
+  </div>
+</nav>
+
+
+
+<style>
+  /* --- Hamburger --- */
+.menu-hamburger {
+  display: none; /* caché par défaut sur grand écran */
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 1001; /* au-dessus du menu */
+  color: #003366; /* couleur du hamburger */
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .menu-hamburger {
+    display: block; /* visible aux petits écrans */
+  }
+
+  .sidebar {
+    transform: translateX(-100%); /* menu caché par défaut */
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar.active {
+    transform: translateX(0); /* menu visible quand actif */
+  }
+}
+
+@media (max-width: 600px) {
+  .menu-hamburger {
+    left: 10px;
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 400px) {
+  .menu-hamburger {
+    left: 8px;
+    font-size: 25px;
+  }
+}
+
+</style>
+
+<script>
+  const menu = document.getElementById("menu-hamburger");
+const sidebar = document.getElementById("sidebar");
+
+menu.addEventListener('click', () => {
+  sidebar.classList.toggle("active");
+});
+
+</script>
+
+
+  
+
+
+<main class="main-content">
+  <section class="about-section">
+    <h1>À propos de Flex Gestion</h1>
+    <p>
+      Flex Gestion est une plateforme innovante conçue pour faciliter la gestion de vos données grâce à une sélection de tableurs Excel puissants et faciles à utiliser.  
+      Que vous soyez un petit commerçant, un gestionnaire ou un entrepreneur, notre objectif est de vous fournir des outils fiables et adaptés pour suivre vos entrées, sorties, inventaires, et optimiser votre gestion financière.  
+      Vous pouvez télécharger nos modèles gratuitement ou accéder à des versions plus avancées, incluant des fonctionnalités supplémentaires et un support dédié.
+    </p>
+
+    <p>
+      Notre site vous accompagne dans votre organisation quotidienne, vous permettant de gagner du temps, de limiter les erreurs, et d'améliorer votre prise de décision grâce à des tableaux clairs, interactifs et prêts à l'emploi.  
+      Que vous soyez novice ou expert, nos modèles s'adaptent à vos besoins pour vous aider à maîtriser la gestion de vos données sans complication.
+    </p>
+
+
+    <h2>Qui suis-je ?</h2>
+<div class="about-me">
+  <img src="1212.jpg" alt="Photo de Micho Malula" class="photo-auteur">
+  <p>
+    Je m'appelle <strong>Micho Malula</strong>, développeur passionné et créateur de Flex Gestion.  
+    Ce site est le fruit de mon engagement à rendre la gestion des données accessible à tous, grâce à des solutions simples, efficaces, et modernes.  
+    Avec une expérience en programmation web et en développement d’outils numériques, j'ai conçu Flex Gestion pour qu'il soit intuitif et utile, en mettant l’utilisateur au cœur de chaque fonctionnalité.  
+    Je reste à votre écoute pour améliorer continuellement ce projet et vous offrir la meilleure expérience possible.
+  </p>
+</div>
+
+   
+    <h2>Contact</h2>
+    <p>
+      Vous souhaitez me contacter ou proposer des idées ? N’hésitez pas à m’écrire à <a href="mailto:micho.malula@example.com">malulamicho5@gmail.com</a>.
+    </p>
+  </section>
+</main>
+
+<style>
+  .main-content {
+  margin-left: 20%px; /* espace pour le menu latéral */
+  padding: 20px;
+}
+
+  @media (max-width: 768px) {
+  .sidebar.active ~ .main-content {
+    margin-left: 250px; /* décalage si menu hamburger ouvert */
+  }
+.main-content{
+  margin-left: 40px;
+}
+  .about-me {
+    flex-direction: column; /* image au-dessus du texte */
+    align-items: center;
+  }
+
+  .about-me .photo-auteur {
+    width: 120px;
+    margin-bottom: 10px;
+  }
+
+  .about-section p {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    padding: 12px;
+    margin-left: 30px;
+  }
+
+  .about-section p {
+    font-size: 14px;
+  }
+
+  .about-section h1 {
+    font-size: 22px;
+  }
+
+  .about-section h2 {
+    font-size: 18px;
+  }
+
+  .about-me .photo-auteur {
+    width: 100px;
+  }
+}
+
+@media (max-width: 400px) {
+  .about-section p {
+    font-size: 13px;
+  }
+.main-content{
+  margin-left: 40px;
+}
+  .about-section h1 {
+    font-size: 20px;
+  }
+
+  .about-section h2 {
+    font-size: 16px;
+  }
+
+  .about-me .photo-auteur {
+    width: 90px;
+  }
+}
+</style>
+
+</body>
+</html>

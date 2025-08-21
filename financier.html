@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="financier.css">
+     <link rel="stylesheet" href="fontawesome-free-6.5.1-web/fontawesome-free-6.5.1-web/css/all.min.css">
+      <link rel="icon" href="AB12.png" type="image/png">
+</head>
+<body>
+     
+<!-- MENU HAMBURGER -->
+<div id="menu-hamburger" class="menu-hamburger">
+  &#9776;
+</div>
+
+<nav class="sidebar" id="sidebar">
+  <img src="AB12.png" alt="Logo">
+
+  <a href="actu.html" class="canvas"><i class="fas fa-home"></i> Vue d'ensemble</a>
+
+  <div class="grid-menu">
+    <a href="premuin.html" class="menu-item">
+      <i class="fas fa-calculator"></i>
+      <span>Modèles </span>
+    </a>
+
+    <a href="avis.html" class="menu-item">
+      <i class="fas fa-comment-dots"></i>
+      <span>Votre avis</span>
+    </a>
+
+    <a href="propos.html" class="menu-item">
+      <i class="fas fa-info-circle"></i>
+      <span>A Propos</span>
+    </a>
+  </div>
+</nav>
+
+
+
+<style>
+  /* --- Hamburger --- */
+.menu-hamburger {
+  display: none; /* caché par défaut sur grand écran */
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 1001; /* au-dessus du menu */
+  color: #003366; /* couleur du hamburger */
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .menu-hamburger {
+    display: block; /* visible aux petits écrans */
+  }
+
+  .sidebar {
+    transform: translateX(-100%); /* menu caché par défaut */
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar.active {
+    transform: translateX(0); /* menu visible quand actif */
+  }
+}
+
+@media (max-width: 600px) {
+  .menu-hamburger {
+    left: 10px;
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 400px) {
+  .menu-hamburger {
+    left: 8px;
+    font-size: 25px;
+  }
+}
+
+</style>
+
+<script>
+  const menu = document.getElementById("menu-hamburger");
+const sidebar = document.getElementById("sidebar");
+
+menu.addEventListener('click', () => {
+  sidebar.classList.toggle("active");
+});
+
+</script>
+
+  <section class="tent">
+     <div class="table-block">
+    <h2>Modèle A — Grand Livre / Cashflow</h2>
+    <div class="buttons">
+      <button class="btn" id="exportExcelFinA">Télécharger Excel</button>
+      <button class="btn secondary" id="exportPDFFinA">Télécharger PDF</button>
+    </div>
+
+    <table id="financeA" aria-label="Grand Livre">
+      <thead>
+        <tr>
+          <th style="width:12%;">Date</th>
+          <th style="width:34%;">Description</th>
+          <th style="width:18%;">Catégorie</th>
+          <th style="width:11%;">Débit (USD)</th>
+          <th style="width:11%;">Crédit (USD)</th>
+          <th style="width:14%;">Solde (USD)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Quelques lignes d'affichage (vierges pour l'utilisateur) -->
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+
+    <p class="note">Excel exporté : en-têtes + 1000 lignes vierges avec formule automatique de <strong>Solde</strong> par ligne.</p>
+  </div>
+
+  <!-- =========================
+       Modèle B — Budget vs Réel Mensuel
+       Colonnes : Mois | Budget | Réel | Écart | % Écart
+       Écart = Réel - Budget ; % Écart = IF(Budget=0,0,(Réel-Budget)/Budget)
+       ========================= -->
+  <div class="table-block">
+    <h2>Modèle B — Budget vs Réel (Mensuel)</h2>
+    <div class="buttons">
+      <button class="btn" id="exportExcelFinB">Télécharger Excel</button>
+      <button class="btn secondary" id="exportPDFFinB">Télécharger PDF</button>
+    </div>
+
+    <table id="financeB" aria-label="Budget vs Réel">
+      <thead>
+        <tr>
+          <th style="width:20%;">Mois</th>
+          <th style="width:20%;">Budget (USD)</th>
+          <th style="width:20%;">Réel (USD)</th>
+          <th style="width:20%;">Écart (USD)</th>
+          <th style="width:20%;">% Écart</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Janvier</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>Février</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>Mars</td><td></td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+</div>
+
+<div class="table-block">
+  <h2>Suivi des Dépenses Mensuelles</h2>
+  <div class="buttons">
+    <button class="btn" id="exportExcelFinance3">Télécharger Excel</button>
+    <button class="btn" id="exportPDFFinance3">Télécharger PDF</button>
+  </div>
+  <table id="financeTable3">
+    <thead>
+      <tr>
+        <th>Mois</th>
+        <th>Catégorie</th>
+        <th>Dépenses Prévues</th>
+        <th>Dépenses Réelles</th>
+        <th>Écart</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 1000 lignes automatiques avec formules -->
+      <tr>
+        <td>Janvier</td>
+        <td>Alimentation</td>
+        <td>=200</td>
+        <td>=180</td>
+        <td>=C2-D2</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="table-block">
+  <h2>Analyse des Revenus & Dépenses</h2>
+  <div class="buttons">
+    <button class="btn" id="exportExcelFinance4">Télécharger Excel</button>
+    <button class="btn" id="exportPDFFinance4">Télécharger PDF</button>
+  </div>
+  <table id="financeTable4">
+    <thead>
+      <tr>
+        <th>Mois</th>
+        <th>Revenus</th>
+        <th>Dépenses</th>
+        <th>Épargne</th>
+        <th>Solde Final</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 1000 lignes avec formules -->
+      <tr>
+        <td>Janvier</td>
+        <td>=2000</td>
+        <td>=1500</td>
+        <td>=B2-C2</td>
+        <td>=B2-C2</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+  </section>
+
+
+ <style>
+
+.table-block {
+  margin-bottom: 30px;
+  overflow-x: auto; /* permet le scroll horizontal si écran petit */
+}
+
+
+    @media (max-width: 768px) {
+  .tent {
+    margin-left: 0; /* contenu prend toute la largeur */
+    padding: 15px;
+  }
+
+  .sidebar.active ~ .tent {
+    margin-left: 250px; /* si le menu est ouvert, décaler le contenu */
+  }
+
+  .table-block table {
+    font-size: 14px; /* réduire la taille du texte sur mobile */
+  }
+}
+
+@media (max-width: 600px) {
+  .tent {
+    padding: 10px;
+  }
+
+  .table-block table {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 400px) {
+  .table-block table {
+    font-size: 12px;
+  }
+}
+   </style>
+
+
+
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+
+  <script>
+    
+async function exportExcelModelA() {
+  const workbook = new ExcelJS.Workbook();
+  const sheet = workbook.addWorksheet("Grand Livre");
+
+  // Header row
+  sheet.addRow(["Date", "Description", "Catégorie", "Débit (USD)", "Crédit (USD)", "Solde (USD)"]);
+
+  // Style en-tête
+  const header = sheet.getRow(1);
+  header.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 12 };
+  header.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: '4472C4' } };
+  header.alignment = { horizontal: 'center', vertical: 'middle' };
+
+  // Colonnes largeur
+  sheet.columns = [
+    { width: 14 }, { width: 40 }, { width: 24 }, { width: 14 }, { width: 14 }, { width: 16 }
+  ];
+
+  // Create 1000 rows (rows 2..1001)
+  // For Solde column (F): row 2 => =E2-D2 ; row i>2 => =F{i-1} + E{i} - D{i}
+  for (let i = 2; i <= 1001; i++) {
+    sheet.addRow([null, null, null, null, null, null]);
+    const solCell = sheet.getCell(`F${i}`);
+    if (i === 2) {
+      solCell.value = { formula: `E${i}-D${i}` };
+    } else {
+      solCell.value = { formula: `F${i-1}+E${i}-D${i}` };
+    }
+  }
+
+  // Format monétaire pour Debit/Credit/Solde
+  sheet.getColumn(4).numFmt = '#,##0.00';
+  sheet.getColumn(5).numFmt = '#,##0.00';
+  sheet.getColumn(6).numFmt = '#,##0.00';
+
+  // Alternating fill for readability in Excel (apply to header only is enough visually)
+  // Freeze header row
+  sheet.views = [{ state: 'frozen', ySplit: 1 }];
+
+  const buffer = await workbook.xlsx.writeBuffer();
+  saveAs(new Blob([buffer]), "Grand_Livre_Cashflow.xlsx");
+}
+
+function exportPDFModelA() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ unit: 'pt', format: 'a4', orientation: 'landscape' });
+
+  doc.setFontSize(16);
+  doc.text("Modèle A — Grand Livre / Cashflow", 40, 40);
+
+  // Build empty body (20 rows)
+  const body = [];
+  for (let i = 0; i < 20; i++) body.push(["", "", "", "", "", ""]);
+
+  doc.autoTable({
+    startY: 64,
+    head: [["Date", "Description", "Catégorie", "Débit (USD)", "Crédit (USD)", "Solde (USD)"]],
+    body,
+    styles: { fontSize: 10, cellPadding: 6, halign: 'left' },
+    headStyles: { fillColor: [68,114,196], textColor: 255, halign: 'center' },
+    alternateRowStyles: { fillColor: [245,245,245] },
+    theme: 'grid'
+  });
+
+  doc.save("Grand_Livre_Cashflow.pdf");
+}
+
+async function exportExcelModelB() {
+  const workbook = new ExcelJS.Workbook();
+  const sheet = workbook.addWorksheet("Budget vs Réel");
+
+  // Header
+  sheet.addRow(["Mois", "Budget (USD)", "Réel (USD)", "Écart (USD)", "% Écart"]);
+
+  // Style header
+  const header = sheet.getRow(1);
+  header.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 12 };
+  header.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: '4472C4' } };
+  header.alignment = { horizontal: 'center', vertical: 'middle' };
+
+  sheet.columns = [
+    { width: 18 }, { width: 18 }, { width: 18 }, { width: 16 }, { width: 14 }
+  ];
+
+  // rows 2..1001
+  // Écart = Cx - Bx
+  // % Écart = IF(Bx=0,0,(Cx-Bx)/Bx)
+  for (let i = 2; i <= 1001; i++) {
+    sheet.addRow([null, null, null, null, null]);
+    sheet.getCell(`D${i}`).value = { formula: `C${i}-B${i}` };
+    sheet.getCell(`E${i}`).value = { formula: `IF(B${i}=0,0,(C${i}-B${i})/B${i})` };
+  }
+
+  // Formats
+  sheet.getColumn(2).numFmt = '#,##0.00';
+  sheet.getColumn(3).numFmt = '#,##0.00';
+  sheet.getColumn(4).numFmt = '#,##0.00';
+  sheet.getColumn(5).numFmt = '0.00%';
+
+  sheet.views = [{ state: 'frozen', ySplit: 1 }];
+
+  const buffer = await workbook.xlsx.writeBuffer();
+  saveAs(new Blob([buffer]), "Budget_vs_Reel.xlsx");
+}
+
+function exportPDFModelB() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ unit: 'pt', format: 'a4', orientation: 'landscape' });
+
+  doc.setFontSize(16);
+  doc.text("Modèle B — Budget vs Réel (Mensuel)", 40, 40);
+
+  const body = [];
+  for (let i = 0; i < 20; i++) body.push(["", "", "", "", ""]);
+
+  doc.autoTable({
+    startY: 64,
+    head: [["Mois", "Budget (USD)", "Réel (USD)", "Écart (USD)", "% Écart"]],
+    body,
+    styles: { fontSize: 10, cellPadding: 6, halign: 'center' },
+    headStyles: { fillColor: [68,114,196], textColor: 255, halign: 'center' },
+    alternateRowStyles: { fillColor: [245,245,245] },
+    theme: 'grid'
+  });
+
+  doc.save("Budget_vs_Reel.pdf");
+}
+
+/* ---------- boutons listeners ---------- */
+document.getElementById("exportExcelFinA").addEventListener("click", function () {
+  exportExcelModelA();
+});
+document.getElementById("exportPDFFinA").addEventListener("click", function () {
+  exportPDFModelA();
+});
+
+document.getElementById("exportExcelFinB").addEventListener("click", function () {
+  exportExcelModelB();
+});
+document.getElementById("exportPDFFinB").addEventListener("click", function () {
+  exportPDFModelB();
+});
+  </script>
+
+
+<script>
+document.getElementById("exportExcelFinance3").addEventListener("click", async function() {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet("Dépenses Mensuelles");
+
+    // En-têtes
+    sheet.addRow(["Mois","Catégorie","Dépenses Prévues","Dépenses Réelles","Écart"]);
+
+    const header = sheet.getRow(1);
+    header.font = { bold: true, color: { argb:'FFFFFFFF' } };
+    header.fill = { type:'pattern', pattern:'solid', fgColor:{ argb:'4472C4' } };
+    header.alignment = { horizontal:'center' };
+
+    sheet.columns = [
+        { width: 15 }, { width: 22 }, { width: 18 }, { width: 18 }, { width: 18 }
+    ];
+
+    // Générer 1000 lignes avec formules automatiques
+    const categories = ["Alimentation","Transport","Logement","Santé","Loisirs"];
+    for(let i=2; i<=1000; i++){
+        let mois = `Mois ${i-1}`;
+        let cat = categories[(i-2)%categories.length];
+        sheet.addRow([mois, cat, null, null, null]);
+        sheet.getCell(`E${i}`).value = { formula: `C${i}-D${i}` }; // Écart
+    }
+
+    // Format monétaire
+    sheet.getColumn(3).numFmt = '#,##0.00';
+    sheet.getColumn(4).numFmt = '#,##0.00';
+    sheet.getColumn(5).numFmt = '#,##0.00';
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    saveAs(new Blob([buffer]), "Finance_SuiviDepenses.xlsx");
+});
+
+document.getElementById("exportPDFFinance3").addEventListener("click", function() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const body = [];
+    for(let i=1;i<=20;i++){ body.push([`Mois ${i}`, "Alimentation","","",""]); }
+
+    doc.setFontSize(14);
+    doc.text("Suivi des Dépenses Mensuelles", 60, 15);
+
+    doc.autoTable({
+        startY: 25,
+        head:[["Mois","Catégorie","Dépenses Prévues","Dépenses Réelles","Écart"]],
+        body: body,
+        theme: "grid",
+        headStyles:{ fillColor:[68,114,196], textColor:255, halign:"center" },
+        bodyStyles:{ halign:"center" },
+        alternateRowStyles:{ fillColor:[240,240,240] }
+    });
+
+    doc.save("Finance_SuiviDepenses.pdf");
+});
+</script>
+
+
+<script>
+document.getElementById("exportExcelFinance4").addEventListener("click", async function() {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet("Revenus & Dépenses");
+
+    // En-têtes
+    sheet.addRow(["Mois","Revenus","Dépenses","Épargne","Solde Final"]);
+
+    const header = sheet.getRow(1);
+    header.font = { bold: true, color: { argb:'FFFFFFFF' } };
+    header.fill = { type:'pattern', pattern:'solid', fgColor:{ argb:'4472C4' } };
+    header.alignment = { horizontal:'center' };
+
+    sheet.columns = [
+        { width: 15 }, { width: 18 }, { width: 18 }, { width: 18 }, { width: 18 }
+    ];
+
+    // Générer 1000 lignes avec formules automatiques
+    for(let i=2;i<=1000;i++){
+        let mois = `Mois ${i-1}`;
+        sheet.addRow([mois, null, null, null, null]);
+        sheet.getCell(`D${i}`).value = { formula: `B${i}-C${i}` }; // Épargne
+        sheet.getCell(`E${i}`).value = { formula: `B${i}-C${i}` }; // Solde Final
+    }
+
+    // Format monétaire
+    sheet.getColumn(2).numFmt = '#,##0.00';
+    sheet.getColumn(3).numFmt = '#,##0.00';
+    sheet.getColumn(4).numFmt = '#,##0.00';
+    sheet.getColumn(5).numFmt = '#,##0.00';
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    saveAs(new Blob([buffer]), "Finance_RevenusDepenses.xlsx");
+});
+
+document.getElementById("exportPDFFinance4").addEventListener("click", function() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const body = [];
+    for(let i=1;i<=20;i++){ body.push([`Mois ${i}`, "", "", "", ""]); }
+
+    doc.setFontSize(14);
+    doc.text("Analyse des Revenus & Dépenses", 60, 15);
+
+    doc.autoTable({
+        startY: 25,
+        head:[["Mois","Revenus","Dépenses","Épargne","Solde Final"]],
+        body: body,
+        theme: "grid",
+        headStyles:{ fillColor:[68,114,196], textColor:255, halign:"center" },
+        bodyStyles:{ halign:"center" },
+        alternateRowStyles:{ fillColor:[240,240,240] }
+    });
+
+    doc.save("Finance_RevenusDepenses.pdf");
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

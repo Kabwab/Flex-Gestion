@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Perfomance.css">
+    <link rel="stylesheet" href="fontawesome-free-6.5.1-web/fontawesome-free-6.5.1-web/css/all.min.css">
+  <link rel="icon" href="AB12.png" type="image/png">
+</head>
+<body>
+
+<!-- MENU HAMBURGER -->
+<div id="menu-hamburger" class="menu-hamburger">
+  &#9776;
+</div>
+
+<nav class="sidebar" id="sidebar">
+  <img src="AB12.png" alt="Logo">
+
+  <a href="actu.html" class="canvas"><i class="fas fa-home"></i> Vue d'ensemble</a>
+
+  <div class="grid-menu">
+    <a href="premuin.html" class="menu-item">
+      <i class="fas fa-calculator"></i>
+      <span>Modèles </span>
+    </a>
+
+    <a href="avis.html" class="menu-item">
+      <i class="fas fa-comment-dots"></i>
+      <span>Votre avis</span>
+    </a>
+
+    <a href="propos.html" class="menu-item">
+      <i class="fas fa-info-circle"></i>
+      <span>A Propos</span>
+    </a>
+  </div>
+</nav>
+
+
+
+<style>
+  /* --- Hamburger --- */
+.menu-hamburger {
+  display: none; /* caché par défaut sur grand écran */
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 1001; /* au-dessus du menu */
+  color: #003366; /* couleur du hamburger */
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .menu-hamburger {
+    display: block; /* visible aux petits écrans */
+  }
+
+  .sidebar {
+    transform: translateX(-100%); /* menu caché par défaut */
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar.active {
+    transform: translateX(0); /* menu visible quand actif */
+  }
+}
+
+@media (max-width: 600px) {
+  .menu-hamburger {
+    left: 10px;
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 400px) {
+  .menu-hamburger {
+    left: 8px;
+    font-size: 25px;
+  }
+}
+
+</style>
+
+<script>
+  const menu = document.getElementById("menu-hamburger");
+const sidebar = document.getElementById("sidebar");
+
+menu.addEventListener('click', () => {
+  sidebar.classList.toggle("active");
+});
+
+</script>
+
+<section class="tent">
+  <div class="table-block">
+     <h2>Performance des Travailleurs (Modèle 1)</h2>
+    <div class="boutons">
+  <button class="btn" id="exportExcelPerf1">Télécharger Excel</button>
+    <button class="btn" id="exportPDFPerf1">Télécharger PDF</button>
+    </div>
+
+ <table id="perfTable1">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Poste</th>
+        <th>Objectif Atteint</th>
+        <th>Score</th>
+        <th>% Performance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Jean</td><td>Vendeur</td><td></td><td></td><td></td></tr>
+      <tr><td>Marie</td><td>Comptable</td><td></td><td></td><td></td></tr>
+      <tr><td>Paul</td><td>Magasinier</td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+</div>
+
+    </div>
+  </div>
+
+  <div class="table-block">
+  <h2>Performance des Travailleurs (Modèle 2)</h2>
+  <div class="buttons">
+    <button class="btn" id="exportExcelPerf2">Télécharger Excel</button>
+    <button class="btn" id="exportPDFPerf2">Télécharger PDF</button>
+  </div>
+  <table id="perfTable2">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Poste</th>
+        <th>Qualité du Travail</th>
+        <th>Assiduité</th>
+        <th>Respect des Délais</th>
+        <th>Score Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Jean</td><td>Vendeur</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Marie</td><td>Comptable</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Paul</td><td>Magasinier</td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="table-block">
+  <h2>Performance des Travailleurs (Modèle 3)</h2>
+  <div class="buttons">
+    <button class="btn" id="exportExcelPerf3">Télécharger Excel</button>
+    <button class="btn" id="exportPDFPerf3">Télécharger PDF</button>
+  </div>
+  <table id="perfTable3">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Poste</th>
+        <th>Qualité (40%)</th>
+        <th>Assiduité (30%)</th>
+        <th>Respect Délais (30%)</th>
+        <th>Score Pondéré</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Jean</td><td>Vendeur</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Marie</td><td>Comptable</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Paul</td><td>Magasinier</td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="table-block">
+  <h2>Performance des Travailleurs (Modèle 4)</h2>
+  <div class="buttons">
+    <button class="btn" id="exportExcelPerf4">Télécharger Excel</button>
+    <button class="btn" id="exportPDFPerf4">Télécharger PDF</button>
+  </div>
+  <table id="perfTable4">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Poste</th>
+        <th>Objectif Mensuel</th>
+        <th>Réalisé</th>
+        <th>% Atteint</th>
+        <th>Évaluation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Jean</td><td>Vendeur</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Marie</td><td>Comptable</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Paul</td><td>Magasinier</td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+</div>
+
+
+</section>
+
+
+
+ <style>
+
+.table-block {
+  margin-bottom: 30px;
+  overflow-x: auto; /* permet le scroll horizontal si écran petit */
+}
+
+
+    @media (max-width: 768px) {
+  .tent {
+    margin-left: 0; /* contenu prend toute la largeur */
+    padding: 15px;
+  }
+
+  .sidebar.active ~ .tent {
+    margin-left: 250px; /* si le menu est ouvert, décaler le contenu */
+  }
+
+  .table-block table {
+    font-size: 14px; /* réduire la taille du texte sur mobile */
+  }
+}
+
+@media (max-width: 600px) {
+  .tent {
+    padding: 10px;
+  }
+
+  .table-block table {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 400px) {
+  .table-block table {
+    font-size: 12px;
+  }
+}
+   </style>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+
+<script>
+// ---------- Modèle 1 ----------
+document.getElementById("exportExcelPerf1").addEventListener("click", async function() {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet("Performance 1");
+
+    sheet.addRow(["Nom", "Poste", "Objectif Atteint", "Score", "% Performance"]);
+
+    const header = sheet.getRow(1);
+    header.font = { bold: true, color: { argb: 'FFFFFFFF' } };
+    header.fill = { type: 'pattern', pattern:'solid', fgColor:{argb:'4472C4'} };
+    header.alignment = { horizontal: 'center' };
+
+    sheet.columns = [
+        { width: 20 }, { width: 18 }, { width: 18 }, { width: 15 }, { width: 15 }
+    ];
+
+    // Lignes avec formules pour Score et % Performance
+    for(let i=2; i<=1000; i++){
+        sheet.addRow([null,null,null,null,null]);
+        sheet.getCell(`D${i}`).value = { formula: `C${i}*1` }; // Score simple
+        sheet.getCell(`E${i}`).value = { formula: `D${i}/100*100` }; // % Performance
+    }
+
+    sheet.getColumn(4).numFmt = '#,##0';
+    sheet.getColumn(5).numFmt = '0.00%';
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    saveAs(new Blob([buffer]), "Performance1.xlsx");
+});
+
+document.getElementById("exportPDFPerf1").addEventListener("click", function() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const body = [];
+    for(let i=1; i<=20; i++){ body.push(["","","","",""]); }
+
+    doc.setFontSize(14);
+    doc.text("Performance des Travailleurs (Modèle 1)", 60, 15);
+
+    doc.autoTable({
+        startY:25,
+        head: [["Nom","Poste","Objectif Atteint","Score","% Performance"]],
+        body: body,
+        theme:"grid",
+        headStyles:{ fillColor:[52,152,219], textColor:255, halign:"center"},
+        bodyStyles:{ halign:"center" },
+        alternateRowStyles:{ fillColor:[240,240,240]}
+    });
+
+    doc.save("Performance1.pdf");
+});
+
+// ---------- Modèle 2 ----------
+document.getElementById("exportExcelPerf2").addEventListener("click", async function() {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet("Performance 2");
+
+    sheet.addRow(["Nom","Poste","Qualité du Travail","Assiduité","Respect des Délais","Score Total"]);
+
+    const header = sheet.getRow(1);
+    header.font = { bold: true, color: { argb: 'FFFFFFFF' } };
+    header.fill = { type: 'pattern', pattern:'solid', fgColor:{argb:'4472C4'} };
+    header.alignment = { horizontal: 'center' };
+
+    sheet.columns = [
+        { width: 20 }, { width: 18 }, { width: 18 }, { width: 15 }, { width: 18 }, { width: 15 }
+    ];
+
+    // Lignes avec formules Score Total
+    for(let i=2; i<=1000; i++){
+        sheet.addRow([null,null,null,null,null,null]);
+        sheet.getCell(`F${i}`).value = { formula: `C${i}+D${i}+E${i}` }; // Score total
+    }
+
+    sheet.getColumn(3).numFmt = '#,##0';
+    sheet.getColumn(4).numFmt = '#,##0';
+    sheet.getColumn(5).numFmt = '#,##0';
+    sheet.getColumn(6).numFmt = '#,##0';
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    saveAs(new Blob([buffer]), "Performance2.xlsx");
+});
+
+document.getElementById("exportPDFPerf2").addEventListener("click", function() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const body = [];
+    for(let i=1; i<=20; i++){ body.push(["","","","","",""]); }
+
+    doc.setFontSize(14);
+    doc.text("Performance des Travailleurs (Modèle 2)", 60, 15);
+
+    doc.autoTable({
+        startY:25,
+        head: [["Nom","Poste","Qualité du Travail","Assiduité","Respect des Délais","Score Total"]],
+        body: body,
+        theme:"grid",
+        headStyles:{ fillColor:[52,152,219], textColor:255, halign:"center"},
+        bodyStyles:{ halign:"center" },
+        alternateRowStyles:{ fillColor:[240,240,240]}
+    });
+
+    doc.save("Performance2.pdf");
+});
+</script>
+
+<script>
+// ---------- Modèle 3 ----------
+document.getElementById("exportExcelPerf3").addEventListener("click", async function() {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet("Performance 3");
+
+    sheet.addRow(["Nom","Poste","Qualité (40%)","Assiduité (30%)","Respect Délais (30%)","Score Pondéré"]);
+
+    const header = sheet.getRow(1);
+    header.font = { bold:true, color:{argb:'FFFFFFFF'} };
+    header.fill = { type:'pattern', pattern:'solid', fgColor:{argb:'4472C4'} };
+    header.alignment = { horizontal:'center' };
+
+    sheet.columns = [
+        { width:20 }, { width:18 }, { width:18 }, { width:15 }, { width:18 }, { width:18 }
+    ];
+
+    // Lignes et formules pondérées
+    for(let i=2; i<=1000; i++){
+        sheet.addRow([null,null,null,null,null,null]);
+        sheet.getCell(`F${i}`).value = { formula: `C${i}*0.4 + D${i}*0.3 + E${i}*0.3` };
+    }
+
+    [3,4,5,6].forEach(c => sheet.getColumn(c).numFmt='#,##0');
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    saveAs(new Blob([buffer]), "Performance3.xlsx");
+});
+
+document.getElementById("exportPDFPerf3").addEventListener("click", function() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    const body = [];
+    for(let i=1;i<=20;i++){ body.push(["","","","","",""]); }
+    doc.setFontSize(14);
+    doc.text("Performance des Travailleurs (Modèle 3)", 60, 15);
+    doc.autoTable({
+        startY:25,
+        head:[["Nom","Poste","Qualité (40%)","Assiduité (30%)","Respect Délais (30%)","Score Pondéré"]],
+        body:body,
+        theme:"grid",
+        headStyles:{fillColor:[52,152,219],textColor:255,halign:"center"},
+        bodyStyles:{halign:"center"},
+        alternateRowStyles:{fillColor:[240,240,240]}
+    });
+    doc.save("Performance3.pdf");
+});
+
+// ---------- Modèle 4 ----------
+document.getElementById("exportExcelPerf4").addEventListener("click", async function() {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet("Performance 4");
+
+    sheet.addRow(["Nom","Poste","Objectif Mensuel","Réalisé","% Atteint","Évaluation"]);
+
+    const header = sheet.getRow(1);
+    header.font = { bold:true, color:{argb:'FFFFFFFF'} };
+    header.fill = { type:'pattern', pattern:'solid', fgColor:{argb:'4472C4'} };
+    header.alignment = { horizontal:'center' };
+
+    sheet.columns = [
+        { width:20 }, { width:18 }, { width:18 }, { width:18 }, { width:15 }, { width:18 }
+    ];
+
+    for(let i=2;i<=1000;i++){
+        sheet.addRow([null,null,null,null,null,null]);
+        sheet.getCell(`E${i}`).value = { formula: `D${i}/C${i}` };  // % Atteint
+        sheet.getCell(`F${i}`).value = { formula: `IF(E${i}>=0.9,"Excellent",IF(E${i}>=0.75,"Bon","À Améliorer"))` }; // Évaluation
+    }
+
+    [3,4,5].forEach(c => sheet.getColumn(c).numFmt='#,##0.00');
+    sheet.getColumn(5).numFmt='0.00%';
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    saveAs(new Blob([buffer]), "Performance4.xlsx");
+});
+
+document.getElementById("exportPDFPerf4").addEventListener("click", function() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    const body = [];
+    for(let i=1;i<=20;i++){ body.push(["","","","","",""]); }
+    doc.setFontSize(14);
+    doc.text("Performance des Travailleurs (Modèle 4)", 60, 15);
+    doc.autoTable({
+        startY:25,
+        head:[["Nom","Poste","Objectif Mensuel","Réalisé","% Atteint","Évaluation"]],
+        body:body,
+        theme:"grid",
+        headStyles:{fillColor:[52,152,219],textColor:255,halign:"center"},
+        bodyStyles:{halign:"center"},
+        alternateRowStyles:{fillColor:[240,240,240]}
+    });
+    doc.save("Performance4.pdf");
+});
+</script>
+
+
+
+
+</body>
+</html>

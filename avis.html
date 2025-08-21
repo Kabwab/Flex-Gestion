@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avis - Pro Tech</title>
+  <link rel="stylesheet" href="Avis.css">
+  <link rel="stylesheet" href="fontawesome-free-6.5.1-web/fontawesome-free-6.5.1-web/css/all.min.css">
+  <link rel="icon" href="AB12.png" type="image/png">
+</head>
+<body>
+
+<!-- MENU HAMBURGER -->
+<div id="menu-hamburger" class="menu-hamburger">
+  &#9776;
+</div>
+
+<nav class="sidebar" id="sidebar">
+  <img src="AB12.png" alt="Logo">
+
+  <a href="actu.html" class="canvas"><i class="fas fa-home"></i> Vue d'ensemble</a>
+
+  <div class="grid-menu">
+    <a href="premuin.html" class="menu-item">
+      <i class="fas fa-calculator"></i>
+      <span>Modèles</span>
+    </a>
+
+    <a href="avis.html" class="menu-item">
+      <i class="fas fa-comment-dots"></i>
+      <span>Votre avis</span>
+    </a>
+
+    <a href="propos.html" class="menu-item">
+      <i class="fas fa-info-circle"></i>
+      <span>A Propos</span>
+    </a>
+  </div>
+</nav>
+
+
+
+<style>
+  /* --- Hamburger --- */
+.menu-hamburger {
+  display: none; /* caché par défaut sur grand écran */
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 1001; /* au-dessus du menu */
+  color: #003366; /* couleur du hamburger */
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .menu-hamburger {
+    display: block; /* visible aux petits écrans */
+  }
+
+  .sidebar {
+    transform: translateX(-100%); /* menu caché par défaut */
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar.active {
+    transform: translateX(0); /* menu visible quand actif */
+  }
+}
+
+@media (max-width: 600px) {
+  .menu-hamburger {
+    left: 10px;
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 400px) {
+  .menu-hamburger {
+    left: 8px;
+    font-size: 25px;
+  }
+}
+
+</style>
+
+<script>
+  const menu = document.getElementById("menu-hamburger");
+const sidebar = document.getElementById("sidebar");
+
+menu.addEventListener('click', () => {
+  sidebar.classList.toggle("active");
+});
+
+</script>
+  <!-- CONTENU PRINCIPAL -->
+  <main class="main-content">
+    <div class="conteneur-principal">
+      <div class="tent">
+        <h1>Vous êtes Bénéficiaire !</h1>
+        <p>
+         Flex Gestion met à votre disposition des tableurs gratuits avec des formules déjà intégrées.<br>
+Téléchargez et gérez vos données sur votre ordinateur, portable ou smartphone...<br>
+        </p>
+      </div>
+
+      <div class="valider">
+        <a href="Premuin.html" class="btn-commande">Téléchargéz</a>
+      </div>
+    </div>
+
+    <!-- QUESTIONNAIRE -->
+    <section class="section-questionnaire">
+      <div class="question">
+        <h2>
+          Flex Gestion est le site idéal pour vous aider à la bonne gestion de vos données.<br>
+          Mais nous souhaitons connaître vos avis.<br>
+          Veuillez répondre aux questions ci-dessous :
+        </h2>
+      </div>
+
+      <form id="formAvis">
+        <div class="reponse">
+          <p>Quels sont les avantages que vous avez trouvés dans le site ?</p>
+          <textarea name="avantages" placeholder="Votre réponse" required></textarea>
+        </div>
+
+        <div class="reponse">
+          <p>Quels sont les désavantages que vous avez constatés dans le site ?</p>
+          <textarea name="desavantages" placeholder="Votre réponse" required></textarea>
+        </div>
+
+        <div class="reponse">
+          <p>Quelles fonctionnalités aimeriez-vous voir chez Flex Gestion ?</p>
+          <textarea name="fonctionnalites" placeholder="Votre réponse" required></textarea>
+        </div>
+
+        <button type="submit" class="btn-valider">Valider mes réponses</button>
+      </form>
+    </section>
+  </main>
+
+  <style>
+.main-content {
+  margin-left: 350px; /* espace pour le menu latéral sur desktop */
+  padding: 20px;
+  max-width: 1200px;
+  transition: margin-left 0.3s ease;
+  box-sizing: border-box;
+}
+
+    /* --- Responsive --- */
+@media (max-width: 1024px) {
+  .main-content {
+    margin-left: 0;
+    padding: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar.active ~ .main-content {
+    margin-left: 250px; /* décalage si menu hamburger ouvert */
+  }
+
+  .tent h1 {
+    font-size: 24px;
+  }
+
+  .tent p {
+    font-size: 15px;
+  }
+
+  .btn-commande {
+    font-size: 15px;
+    padding: 10px 20px;
+  }
+
+  .section-questionnaire .question h2 {
+    font-size: 18px;
+  }
+
+  .reponse p {
+    font-size: 14px;
+  }
+
+  .reponse textarea {
+    min-height: 70px;
+  }
+
+  .btn-valider {
+    font-size: 15px;
+    padding: 8px 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    padding: 12px;
+  }
+
+  .tent h1 {
+    font-size: 22px;
+  }
+
+  .tent p {
+    font-size: 14px;
+  }
+
+  .btn-commande {
+    font-size: 14px;
+    padding: 8px 15px;
+  }
+
+  .section-questionnaire .question h2 {
+    font-size: 16px;
+  }
+
+  .reponse p {
+    font-size: 13px;
+  }
+
+  .reponse textarea {
+    min-height: 60px;
+  }
+
+  .btn-valider {
+    font-size: 14px;
+    padding: 7px 15px;
+  }
+}
+
+@media (max-width: 400px) {
+  .tent h1 {
+    font-size: 20px;
+  }
+
+  .tent p {
+    font-size: 13px;
+  }
+
+  .section-questionnaire .question h2 {
+    font-size: 15px;
+  }
+
+  .reponse p {
+    font-size: 12px;
+  }
+
+  .reponse textarea {
+    min-height: 50px;
+  }
+
+  .btn-valider {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+}
+  </style>
+
+  <!-- Zone pour le message -->
+
+
+<!-- Zone pour le message -->
+<div id="responseMessage" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);
+    background: linear-gradient(135deg, #19a974, #004e92); color:#fff; padding:22px 30px; border-radius:16px;
+    font-size:1.1rem; font-weight:600; box-shadow:0 12px 40px rgba(0,0,0,0.3); z-index:9999; 
+    white-space: pre-line; max-width:650px; text-align:center; line-height:1.6;">
+    <p id="messageText"></p>
+    <button id="closeMessageBtn" style="margin-top:15px; padding:8px 18px; border:none; border-radius:8px; 
+        background:#fff; color:#004e92; font-weight:600; cursor:pointer;">OK</button>
+</div>
+
+<script>
+document.getElementById("formAvis").addEventListener("submit", function(event) {
+  event.preventDefault(); // empêche le rechargement de la page
+
+  // Récupérer les réponses de l'utilisateur
+  let avantages = document.querySelector("textarea[name='avantages']").value;
+  let desavantages = document.querySelector("textarea[name='desavantages']").value;
+  let fonctionnalites = document.querySelector("textarea[name='fonctionnalites']").value;
+
+  // Créer le message
+  let message = `Merci pour vos avis que vous avaient mentionné, nous tenons compte de ça est nous prenons celà comme objet de notre travail  !  
+Avantages que vous avez trouvez : "${avantages}"  
+Désavantages que  vous avez constatés : "${desavantages}"  
+Fonctionnalités vous aimerez voir : "${fonctionnalites}"  
+
+Vos réponses rendent encore Flex Gestion encore plus puissant Merci beaucoup !`;
+
+  // Afficher le message
+  const responseBox = document.getElementById("responseMessage");
+  const messageText = document.getElementById("messageText");
+  messageText.textContent = message;
+  responseBox.style.display = "block";
+
+  // Vider tous les champs du formulaire
+  const inputs = document.querySelectorAll("#formAvis textarea");
+  inputs.forEach(input => input.value = '');
+
+  // Bouton OK pour fermer le message
+  document.getElementById("closeMessageBtn").onclick = function() {
+    responseBox.style.display = "none";
+  };
+});
+</script>
+
+  
+
+</body>
+</html>

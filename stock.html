@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Stock.css">
+     <link rel="stylesheet" href="fontawesome-free-6.5.1-web/fontawesome-free-6.5.1-web/css/all.min.css">
+       <link rel="icon" href="AB12.png" type="image/png">
+</head>
+<body>
+  
+
+
+
+<!-- MENU HAMBURGER -->
+<div id="menu-hamburger" class="menu-hamburger">
+  &#9776;
+</div>
+
+<nav class="sidebar" id="sidebar">
+  <img src="AB12.png" alt="Logo">
+
+  <a href="actu.html" class="canvas"><i class="fas fa-home"></i> Vue d'ensemble</a>
+  <div class="grid-menu">
+    <a href="premuin.html" class="menu-item">
+      <i class="fas fa-calculator"></i>
+      <span>Modèles</span>
+    </a>
+
+    <a href="avis.html" class="menu-item">
+      <i class="fas fa-comment-dots"></i>
+      <span>Votre avis</span>
+    </a>
+
+    <a href="propos.html" class="menu-item">
+      <i class="fas fa-info-circle"></i>
+      <span>A Propos</span>
+    </a>
+  </div>
+</nav>
+
+
+
+<style>
+  /* --- Hamburger --- */
+.menu-hamburger {
+  display: none; /* caché par défaut sur grand écran */
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 1001; /* au-dessus du menu */
+  color: #003366; /* couleur du hamburger */
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .menu-hamburger {
+    display: block; /* visible aux petits écrans */
+  }
+
+  .sidebar {
+    transform: translateX(-100%); /* menu caché par défaut */
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar.active {
+    transform: translateX(0); /* menu visible quand actif */
+  }
+}
+
+@media (max-width: 600px) {
+  .menu-hamburger {
+    left: 10px;
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 400px) {
+  .menu-hamburger {
+    left: 8px;
+    font-size: 25px;
+  }
+}
+
+</style>
+
+<script>
+  const menu = document.getElementById("menu-hamburger");
+const sidebar = document.getElementById("sidebar");
+
+menu.addEventListener('click', () => {
+  sidebar.classList.toggle("active");
+});
+
+</script>
+ 
+
+
+<section class="tent">
+  <div class="table-container">
+    <div class="table-block">
+  <h2>Stock LIFO</h2>
+  <div class="buttons">
+    <button class="btn" id="exportExcel">Télécharger Excel</button>
+    <button class="btn" id="exportPDF">Télécharger PDF</button>
+  </div>
+  <div class="table-container">
+    <table id="stockTable">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Produit</th>
+          <th>Quantité Initiale</th>
+          <th>Entrée</th>
+          <th>Sortie</th>
+          <th>Stock Final</th>
+          <th>Prix Unitaire</th>
+          <th>Valeur Totale</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Produit A</td>
+          <td>50</td>
+          <td>30</td>
+          <td>20</td>
+          <td>=B2+C2-D2</td>
+          <td>10</td>
+          <td>=E2*F2</td>
+        </tr>
+        <tr>
+          <td>Produit B</td>
+          <td>20</td>
+          <td>40</td>
+          <td>15</td>
+          <td>=B3+C3-D3</td>
+          <td>15</td>
+          <td>=E3*F3</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+  </div>
+
+<div class="table-block">
+  <h2>Stock FIFO</h2>
+  <div class="buttons">
+    <button class="btn" id="exportExcelFIFO">Télécharger Excel</button>
+    <button class="btn" id="exportPDFFIFO">Télécharger PDF</button>
+  </div>
+  <div class="table-container">
+    <table id="stockTableFIFO">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Produit</th>
+          <th>Quantité Initiale</th>
+          <th>Entrée</th>
+          <th>Sortie</th>
+          <th>Stock Final</th>
+          <th>Prix Unitaire</th>
+          <th>Valeur Totale</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2025-08-18</td>
+          <td>Produit A</td>
+          <td>50</td>
+          <td>30</td>
+          <td>20</td>
+          <td>=C2+D2-E2</td>
+          <td>10</td>
+          <td>=F2*G2</td>
+        </tr>
+        <tr>
+          <td>2025-08-18</td>
+          <td>Produit B</td>
+          <td>20</td>
+          <td>40</td>
+          <td>15</td>
+          <td>=F2+C3+D3-E3</td>
+          <td>15</td>
+          <td>=F3*G3</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="table-block">
+  <h2>Stock CMPU</h2>
+  <div class="buttons">
+    <button class="btn" id="exportExcelCMPU">Télécharger Excel</button>
+    <button class="btn" id="exportPDFCMPU">Télécharger PDF</button>
+  </div>
+  <div class="table-container">
+    <table id="stockTableCMPU">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Produit</th>
+          <th>Quantité Initiale</th>
+          <th>Entrée</th>
+          <th>Sortie</th>
+          <th>Stock Final</th>
+          <th>CMPU</th>
+          <th>Valeur Totale</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2025-08-18</td>
+          <td>Produit A</td>
+          <td>50</td>
+          <td>30</td>
+          <td>20</td>
+          <td>=C2+D2-E2</td>
+          <td></td>
+          <td>=F2*G2</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="table-block">
+  <h2>Suivi des Stocks et Inventaires</h2>
+  <div class="buttons">
+    <button class="btn" id="exportExcelStocks">Télécharger Excel</button>
+    <button class="btn" id="exportPDFStocks">Télécharger PDF</button>
+  </div>
+  <table id="stocksTable">
+    <thead>
+      <tr>
+        <th>Produit</th>
+        <th>Catégorie</th>
+        <th>Quantité Initiale</th>
+        <th>Entrée</th>
+        <th>Sortie</th>
+        <th>Stock Final</th>
+        <th>Prix Unitaire</th>
+        <th>Valeur Totale</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="table-block">
+  <h2>Suivi Stock par Dépôt</h2>
+  <div class="buttons">
+    <button class="btn" id="exportExcelStockDepot">Télécharger Excel</button>
+    <button class="btn" id="exportPDFStockDepot">Télécharger PDF</button>
+  </div>
+  <table id="stockDepotTable">
+    <thead>
+      <tr>
+        <th>Dépôt</th>
+        <th>Produit</th>
+        <th>Quantité Initiale</th>
+        <th>Entrée</th>
+        <th>Sortie</th>
+        <th>Stock Final</th>
+        <th>Prix Unitaire</th>
+        <th>Valeur Totale</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="table-block">
+  <h2>Suivi Stock par Catégorie et Fournisseur</h2>
+  <div class="buttons">
+    <button class="btn" id="exportExcelStockFournisseur">Télécharger Excel</button>
+    <button class="btn" id="exportPDFStockFournisseur">Télécharger PDF</button>
+  </div>
+  <table id="stockFournisseurTable">
+    <thead>
+      <tr>
+        <th>Fournisseur</th>
+        <th>Catégorie</th>
+        <th>Produit</th>
+        <th>Quantité Initiale</th>
+        <th>Entrée</th>
+        <th>Sortie</th>
+        <th>Stock Final</th>
+        <th>Prix Unitaire</th>
+        <th>Valeur Totale</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</section>
+
+
+ <style>
+.table-block {
+  margin-bottom: 30px;
+  overflow-x: auto; /* permet le scroll horizontal si écran petit */
+}
+
+    @media (max-width: 768px) {
+  .tent {
+    margin-left: 0; /* contenu prend toute la largeur */
+    padding: 15px;
+  }
+
+  .sidebar.active ~ .tent {
+    margin-left: 250px; /* si le menu est ouvert, décaler le contenu */
+  }
+
+  .table-block table {
+    font-size: 14px; /* réduire la taille du texte sur mobile */
+  }
+}
+
+@media (max-width: 600px) {
+  .tent {
+    padding: 10px;
+  }
+
+  .table-block table {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 400px) {
+  .table-block table {
+    font-size: 12px;
+  }
+}
+   </style>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+
+<script>
+document.getElementById("exportExcel").addEventListener("click", async function() {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet("Stock LIFO");
+
+    // En-têtes
+    sheet.addRow(["Date","Produit","Quantité Initiale","Entrée","Sortie","Stock Final","Prix Unitaire","Valeur Totale"]);
+
+    // Style en-têtes
+    const header = sheet.getRow(1);
+    header.font = { bold: true, color: { argb: 'FFFFFFFF' } };
+    header.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: '4472C4' } };
+    header.alignment = { horizontal: 'center' };
+
+    // Largeur colonnes
+    sheet.columns = [
+        { width: 20 },
+        { width: 18 },
+        { width: 15 },
+        { width: 15 },
+        { width: 18 },
+        { width: 15 },
+        { width: 20 }
+    ];
+
+    // Générer 1000 lignes vides avec formules LIFO
+    for(let i=2; i<=1000; i++){
+        sheet.addRow([null, null, null, null, null, null, null]);
+        sheet.getCell(`F${i}`).value = { formula: `C${i}+D${i}-E${i}` }; // Stock Final
+        sheet.getCell(`H${i}`).value = { formula: `F${i}*G${i}` };       // Valeur Totale
+    }
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    saveAs(new Blob([buffer]), "Stock_LIFO.xlsx");
+});
+
+document.getElementById("exportPDF").addEventListener("click", function() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    // Générer 20 lignes vides pour PDF
+    const data = [];
+    for(let i=1; i<=20; i++){
+        data.push(["", "", "", "", "", "", ""]);
+    }
+
+    doc.setFontSize(14);
+    doc.text("Stock LIFO", 70, 15);
+
+    doc.autoTable({
+        startY: 25,
+        head: [["Produit","Quantité Initiale","Entrée","Sortie","Stock Final","Prix Unitaire","Valeur Totale"]],
+        body: data,
+        theme: "grid",
+        headStyles: { fillColor: [52,152,219], textColor: [255,255,255], halign: "center" },
+        bodyStyles: { halign: "center" },
+        alternateRowStyles: { fillColor: [240,240,240] }
+    });
+
+    doc.save("Stock_LIFO.pdf");
+});
+</script>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+
+<script>
+document.getElementById("exportExcelFIFO").addEventListener("click", async function() {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet("Stock FIFO");
+
+    // En-têtes
+    sheet.addRow(["Date","Produit","Quantité Initiale","Entrée","Sortie","Stock Final","Prix Unitaire","Valeur Totale"]);
+
+    // Style en-têtes
+    const header = sheet.getRow(1);
+    header.font = { bold: true, color: { argb: 'FFFFFFFF' } };
+    header.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: '4472C4' } };
+    header.alignment = { horizontal: 'center' };
+
+    // Largeur colonnes
+    sheet.columns = [
+        { width: 18 }, { width: 20 }, { width: 18 }, { width: 15 },
+        { width: 15 }, { width: 18 }, { width: 15 }, { width: 20 }
+    ];
+
+    // Générer 1000 lignes avec formules FIFO simples (pas de références circulaires)
+    for(let i=2; i<=1000; i++){
+        sheet.addRow([null,null,null,null,null,null,null,null]);
+
+        if(i === 2){
+            // Première ligne
+            sheet.getCell(`F${i}`).value = { formula: `C${i}+D${i}-E${i}` };
+        } else {
+            // FIFO simple : stock final = stock précédent + entrée - sortie
+            sheet.getCell(`F${i}`).value = { formula: `F${i-1}+C${i}+D${i}-E${i}` };
+        }
+
+        // Valeur Totale
+        sheet.getCell(`H${i}`).value = { formula: `F${i}*G${i}` };
+    }
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    saveAs(new Blob([buffer]), "Stock_FIFO.xlsx");
+});
+
+document.getElementById("exportPDFFIFO").addEventListener("click", function() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const data = [];
+    for(let i=1; i<=20; i++){
+        data.push(["", "", "", "", "", "", "", ""]);
+    }
+
+    doc.setFontSize(14);
+    doc.text("Stock FIFO", 70, 15);
+
+    doc.autoTable({
+        startY: 25,
+        head: [["Date","Produit","Quantité Initiale","Entrée","Sortie","Stock Final","Prix Unitaire","Valeur Totale"]],
+        body: data,
+        theme: "grid",
+        headStyles: { fillColor: [52,152,219], textColor: [255,255,255], halign: "center" },
+        bodyStyles: { halign: "center" },
+        alternateRowStyles: { fillColor: [240,240,240] }
+    });
+
+    doc.save("Stock_FIFO.pdf");
+});
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+
+<script>
+document.getElementById("exportExcelCMPU").addEventListener("click", async function() {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet("Stock CMPU");
+
+    // En-têtes
+    sheet.addRow(["Date","Produit","Quantité Initiale","Entrée","Sortie","Stock Final","CMPU","Valeur Totale"]);
+
+    // Style en-têtes
+    const header = sheet.getRow(1);
+    header.font = { bold: true, color: { argb: 'FFFFFFFF' } };
+    header.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: '4472C4' } };
+    header.alignment = { horizontal: 'center' };
+
+    // Largeur colonnes
+    sheet.columns = [
+        { width: 18 }, { width: 20 }, { width: 18 }, { width: 15 },
+        { width: 15 }, { width: 18 }, { width: 15 }, { width: 20 }
+    ];
+
+    // Générer 1000 lignes avec formules simples (pas de référence circulaire)
+    for(let i=2; i<=1000; i++){
+        sheet.addRow([null,null,null,null,null,null,null,null]);
+
+        // Stock Final = Stock Initial + Entrée - Sortie
+        sheet.getCell(`F${i}`).value = { formula: `C${i}+D${i}-E${i}` };
+
+        // Valeur Totale = Stock Final * Prix Unitaire
+        sheet.getCell(`H${i}`).value = { formula: `F${i}*G${i}` };
+    }
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    saveAs(new Blob([buffer]), "Stock_CMPU.xlsx");
+});
+
+document.getElementById("exportPDFCMPU").addEventListener("click", function() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const data = [];
+    for(let i=1; i<=20; i++){
+        data.push(["", "", "", "", "", "", "", ""]);
+    }
+
+    doc.setFontSize(14);
+    doc.text("Stock CMPU", 70, 15);
+
+    doc.autoTable({
+        startY: 25,
+        head: [["Date","Produit","Quantité Initiale","Entrée","Sortie","Stock Final","CMPU","Valeur Totale"]],
+        body: data,
+        theme: "grid",
+        headStyles: { fillColor: [52,152,219], textColor: [255,255,255], halign: "center" },
+        bodyStyles: { halign: "center" },
+        alternateRowStyles: { fillColor: [240,240,240] }
+    });
+
+    doc.save("Stock_CMPU.pdf");
+});
+</script>
+
+
+<script>
+document.getElementById("exportExcelStocks").addEventListener("click", async function() {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet("Stocks Inventaires");
+
+    sheet.addRow(["Produit","Catégorie","Quantité Initiale","Entrée","Sortie","Stock Final","Prix Unitaire","Valeur Totale"]);
+    const header = sheet.getRow(1);
+    header.font = { bold:true, color:{ argb:'FFFFFFFF'} };
+    header.fill = { type:'pattern', pattern:'solid', fgColor:{ argb:'4472C4'} };
+    header.alignment = { horizontal:'center' };
+
+    sheet.columns = [
+        { width:25 }, { width:20 }, { width:18 }, { width:18 }, { width:18 }, { width:18 }, { width:18 }, { width:20 }
+    ];
+
+    for(let i=2;i<=1000;i++){
+        sheet.addRow([null,null,null,null,null,null,null,null]);
+        sheet.getCell(`F${i}`).value = { formula:`C${i}+D${i}-E${i}` }; // Stock Final
+        sheet.getCell(`H${i}`).value = { formula:`F${i}*G${i}` }; // Valeur Totale
+        sheet.getCell(`C${i}`).numFmt = '#,##0.00';
+        sheet.getCell(`D${i}`).numFmt = '#,##0.00';
+        sheet.getCell(`E${i}`).numFmt = '#,##0.00';
+        sheet.getCell(`F${i}`).numFmt = '#,##0.00';
+        sheet.getCell(`G${i}`).numFmt = '#,##0.00';
+        sheet.getCell(`H${i}`).numFmt = '#,##0.00';
+    }
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    saveAs(new Blob([buffer]), "StocksInventaires.xlsx");
+});
+
+document.getElementById("exportPDFStocks").addEventListener("click", function() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    const body=[];
+    for(let i=1;i<=20;i++){ body.push(["","","","","","","",""]); }
+
+    doc.setFontSize(14);
+    doc.text("Suivi des Stocks et Inventaires", 40, 15);
+
+    doc.autoTable({
+        startY:25,
+        head:[["Produit","Catégorie","Quantité Initiale","Entrée","Sortie","Stock Final","Prix Unitaire","Valeur Totale"]],
+        body:body,
+        theme:"grid",
+        headStyles:{ fillColor:[68,114,196], textColor:255, halign:"center" },
+        bodyStyles:{ halign:"center" },
+        alternateRowStyles:{ fillColor:[240,240,240] }
+    });
+
+    doc.save("StocksInventaires.pdf");
+});
+</script>
+
+
+
+<script>
+document.getElementById("exportExcelStockDepot").addEventListener("click", async function() {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet("Stock par Dépôt");
+
+    sheet.addRow(["Dépôt","Produit","Quantité Initiale","Entrée","Sortie","Stock Final","Prix Unitaire","Valeur Totale"]);
+    const header = sheet.getRow(1);
+    header.font = { bold:true, color:{ argb:'FFFFFFFF'} };
+    header.fill = { type:'pattern', pattern:'solid', fgColor:{ argb:'4472C4'} };
+    header.alignment = { horizontal:'center' };
+
+    sheet.columns = [
+        { width:20 }, { width:25 }, { width:18 }, { width:18 }, { width:18 }, { width:18 }, { width:18 }, { width:20 }
+    ];
+
+    for(let i=2;i<=1000;i++){
+        sheet.addRow([null,null,null,null,null,null,null,null]);
+        sheet.getCell(`F${i}`).value = { formula:`C${i}+D${i}-E${i}` }; // Stock Final
+        sheet.getCell(`H${i}`).value = { formula:`F${i}*G${i}` }; // Valeur Totale
+        ["C","D","E","F","G","H"].forEach(col => sheet.getCell(`${col}${i}`).numFmt = '#,##0.00');
+    }
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    saveAs(new Blob([buffer]), "StockDepot.xlsx");
+});
+
+document.getElementById("exportPDFStockDepot").addEventListener("click", function() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    const body=[];
+    for(let i=1;i<=20;i++){ body.push(["","","","","","","",""]); }
+
+    doc.setFontSize(14);
+    doc.text("Suivi Stock par Dépôt", 40, 15);
+
+    doc.autoTable({
+        startY:25,
+        head:[["Dépôt","Produit","Quantité Initiale","Entrée","Sortie","Stock Final","Prix Unitaire","Valeur Totale"]],
+        body:body,
+        theme:"grid",
+        headStyles:{ fillColor:[68,114,196], textColor:255, halign:"center" },
+        bodyStyles:{ halign:"center" },
+        alternateRowStyles:{ fillColor:[240,240,240] }
+    });
+
+    doc.save("StockDepot.pdf");
+});
+</script>
+
+
+
+
+<script>
+document.getElementById("exportExcelStockFournisseur").addEventListener("click", async function() {
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet("Stock Fournisseur");
+
+    sheet.addRow(["Fournisseur","Catégorie","Produit","Quantité Initiale","Entrée","Sortie","Stock Final","Prix Unitaire","Valeur Totale"]);
+    const header = sheet.getRow(1);
+    header.font = { bold:true, color:{ argb:'FFFFFFFF'} };
+    header.fill = { type:'pattern', pattern:'solid', fgColor:{ argb:'4472C4'} };
+    header.alignment = { horizontal:'center' };
+
+    sheet.columns = [
+        { width:20 }, { width:18 }, { width:20 }, { width:18 }, { width:18 }, { width:18 }, { width:18 }, { width:18 }, { width:20 }
+    ];
+
+    for(let i=2;i<=1000;i++){
+        sheet.addRow([null,null,null,null,null,null,null,null,null]);
+        sheet.getCell(`G${i}`).value = { formula:`D${i}+E${i}-F${i}` }; // Stock Final
+        sheet.getCell(`I${i}`).value = { formula:`G${i}*H${i}` }; // Valeur Totale
+        ["D","E","F","G","H","I"].forEach(col => sheet.getCell(`${col}${i}`).numFmt = '#,##0.00');
+    }
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    saveAs(new Blob([buffer]), "StockFournisseur.xlsx");
+});
+
+document.getElementById("exportPDFStockFournisseur").addEventListener("click", function() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    const body=[];
+    for(let i=1;i<=20;i++){ body.push(["","","","","","","","",""]); }
+
+    doc.setFontSize(14);
+    doc.text("Suivi Stock par Catégorie et Fournisseur", 40, 15);
+
+    doc.autoTable({
+        startY:25,
+        head:[["Fournisseur","Catégorie","Produit","Quantité Initiale","Entrée","Sortie","Stock Final","Prix Unitaire","Valeur Totale"]],
+        body:body,
+        theme:"grid",
+        headStyles:{ fillColor:[68,114,196], textColor:255, halign:"center" },
+        bodyStyles:{ halign:"center" },
+        alternateRowStyles:{ fillColor:[240,240,240] }
+    });
+
+    doc.save("StockFournisseur.pdf");
+});
+</script>
+
+
+
+</body>
+</html>
