@@ -253,28 +253,42 @@ menu.addEventListener('click', () => {
 
 
    </section>
-   <style>
+  
+ <style>
 .table-block {
   margin-bottom: 30px;
   overflow-x: auto; /* permet le scroll horizontal si écran petit */
 }
 
+.table-block table {
+  width: 100%; /* prend toute la largeur dispo */
+  border-collapse: collapse;
+  min-width: 600px; /* évite que le tableau casse trop vite */
+}
 
     @media (max-width: 768px) {
   .tent {
-    margin-left: 0; /* contenu prend toute la largeur */
+    margin-left: 30px; /* contenu prend toute la largeur */
     padding: 15px;
+    padding-left: 20%;
   }
 
   .sidebar.active ~ .tent {
     margin-left: 250px; /* si le menu est ouvert, décaler le contenu */
   }
 
-  .table-block table {
-    font-size: 14px; /* réduire la taille du texte sur mobile */
-  }
-}
 
+
+  .table-block {
+    overflow-x: auto; /* scroll horizontal si écran trop petit */
+    width: 100%;
+  }
+    
+  .table-block table {
+    font-size: 14px;
+    min-width: 500px; /* conserve structure */
+  }
+    }
 @media (max-width: 600px) {
   .tent {
     padding: 10px;
@@ -282,15 +296,18 @@ menu.addEventListener('click', () => {
 
   .table-block table {
     font-size: 13px;
+     min-width: 450px;
   }
 }
 
 @media (max-width: 400px) {
   .table-block table {
     font-size: 12px;
+    min-width: 400px;
   }
 }
    </style>
+
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
