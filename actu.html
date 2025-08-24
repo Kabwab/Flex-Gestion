@@ -34,15 +34,15 @@
   </div>
 </header>
 
+
 <style>
 /* --- Menu normal grand écran (>768px) --- */
 .menu-container {
+   box-sizing: border-box; /* évite que le padding déborde */
   display: flex;
   gap: 15px;
-  align-items: center;
+  justify-content: center;
 }
-
-
 
 .menu-hamburger {
   display: none; /* caché sur grand écran */
@@ -50,24 +50,40 @@
   color: black;
   cursor: pointer;
 }
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* empêche le scroll horizontal */
+}
+
 
 /* --- Petits écrans ≤768px --- */
 @media (max-width: 768px) {
-  .menu-container {
+ .menu-container {
     display: none; /* caché par défaut */
     flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     background: #003366;
     position: absolute;
-    right: 0;
     top: 60px;
-    width: 200px;
+    right: 0;
+    width: 70%;
     padding: 15px;
     z-index: 1000;
   }
 
+
+  
+.btns button {
+  margin-bottom: 20px;
+}
+
   .menu-container.active {
     display: flex; /* affiché uniquement si hamburger cliqué */
   }
+
 
   .menu-hamburger {
     display: block; /* hamburger visible */
@@ -83,6 +99,17 @@
     z-index: 1001;
   }
 
+  /* ---------------------- FEATURES ---------------------- */
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.feature{
+  max-width: 150px;
+}
+
+
   /* Liens et bouton style petits écrans */
   .menu-container .nav-links li, 
   .menu-container .cta-button {
@@ -93,6 +120,8 @@
     text-decoration: none;
   }
 
+
+
   /* Pleine largeur pour ≤600px */
   @media (max-width: 600px) {
     .menu-container {
@@ -101,20 +130,32 @@
     }
   }
 
+
+
+
   /* Ajustements très petits écrans ≤400px */
   @media (max-width: 400px) {
     .menu-container {
       font-size: 14px;
       padding: 10px;
     }
-
     .menu-container .nav-links li, 
     .menu-container .cta-button {
       padding: 10px 0;
     }
   }
+
 }
 </style>
+
+
+
+
+
+
+
+
+
 
 <script>
 const menuHamburger = document.getElementById("menuHamburger");
@@ -266,27 +307,27 @@ menuHamburger.addEventListener("click", () => {
 <footer>
         <div class="Contacts-container">
             <div class="contact-items">
-                <img src="images/A.png" alt="Téléphone">
+                <img src="A.png" alt="Téléphone">
                 <p>Appelez-Nous</p>
+                <strong>+243858588615</strong>
+            </div>
+            <div class="contact-items">
+                <img src="D.png" alt="WhatsApp">
+                <p>Lancez une discussion</p>
                 <strong>+243981702835</strong>
             </div>
             <div class="contact-items">
-                <img src="images/D.png" alt="WhatsApp">
-                <p>Lancez une discussion</p>
-                <strong>+243826769760</strong>
-            </div>
-            <div class="contact-items">
-                <img src="images/C.png" alt="Email">
+                <img src="C.png" alt="Email">
                 <p>Avez-vous des questions ?</p>
                 <strong><a href="mailto:Lespro@gmail.com">malulamicho5@gmail.com</a></strong>
             </div>
             <div class="contact-items">
-                <img src="images/B.png" alt="Adresse">
-                <p>7518, AV/SHAUMBA, COMMUNE DE LA GOMBE</p>
+                <img src="B.png" alt="Adresse">
+                <p>7518, AV/NGAMIKA, Q/PLAZZA C/N'SELE</p>
             </div>
         </div>
         <div class="footer-slogan">
-            <p> My Budget, votre partenaire de confiance pour un avenir financier stable.</p>
+            <p> Flex Gestion votre partenaire de la gestion des donnés.</p>
         </div>
     </footer>
 

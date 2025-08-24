@@ -323,6 +323,11 @@ menu.addEventListener('click', () => {
   overflow-x: auto; /* permet le scroll horizontal si écran petit */
 }
 
+.table-block table {
+  width: 100%; /* prend toute la largeur dispo */
+  border-collapse: collapse;
+  min-width: 600px; /* évite que le tableau casse trop vite */
+}
 
     @media (max-width: 768px) {
   .tent {
@@ -334,11 +339,16 @@ menu.addEventListener('click', () => {
     margin-left: 250px; /* si le menu est ouvert, décaler le contenu */
   }
 
-  .table-block table {
-    font-size: 14px; /* réduire la taille du texte sur mobile */
-  }
-}
 
+  .table-block {
+    overflow-x: auto; /* scroll horizontal si écran trop petit */
+  }
+    
+  .table-block table {
+    font-size: 14px;
+    min-width: 500px; /* conserve structure */
+  }
+    }
 @media (max-width: 600px) {
   .tent {
     padding: 10px;
@@ -346,12 +356,14 @@ menu.addEventListener('click', () => {
 
   .table-block table {
     font-size: 13px;
+     min-width: 450px;
   }
 }
 
 @media (max-width: 400px) {
   .table-block table {
     font-size: 12px;
+    min-width: 400px;
   }
 }
    </style>
