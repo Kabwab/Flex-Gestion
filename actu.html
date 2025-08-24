@@ -101,9 +101,8 @@ html, body {
 
   /* ---------------------- FEATURES ---------------------- */
 .features {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
+  gap: 25px;
+  flex-wrap: wrap;
 }
 .feature{
   max-width: 150px;
@@ -120,7 +119,7 @@ html, body {
     text-decoration: none;
   }
 
-
+}
 
   /* Pleine largeur pour ≤600px */
   @media (max-width: 600px) {
@@ -128,6 +127,9 @@ html, body {
       width: 100%;
       top: 50px;
     }
+ .feature {
+    flex: 1 1 45%; /* 2 cartes par ligne sur tablette */
+  }
   }
 
 
@@ -143,9 +145,26 @@ html, body {
     .menu-container .cta-button {
       padding: 10px 0;
     }
+    .feature {
+    flex: 1 1 100%; /* 1 carte par ligne sur mobile */
+    padding: 15px;
   }
 
+  .feature i {
+    font-size: 1.8rem;
+  }
+
+  .feature h3 {
+    font-size: 1.1rem;
+  }
+
+  .feature p {
+    font-size: 0.9rem;
+  }
 }
+  
+
+
 </style>
 
 
