@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://tonpseudo.github.io/sitemap.xml
